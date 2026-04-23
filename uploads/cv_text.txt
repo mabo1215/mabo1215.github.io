@@ -1,0 +1,649 @@
+
+
+
+
+Dr BOB MA
+
+
+
+Machine Learning Engineer | Computer Vision | Embedded AI | Vision–Language–Action
+
+
+
+Auckland, New Zealand  |  Permanent Resident  |  amabo1215@gmail.com  |  +64 21 110 8064
+
+
+
+
+
+PROFESSIONAL SUMMARY
+
+
+
+
+
+
+
+Senior Vision–Language–Action (VLA) and Multimodal AI Engineer with strong experience in real-time perception,
+
+
+
+
+
+
+
+multimodal reasoning, and embodied system deployment on edge devices.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Proven track record designing vision–language–action pipelines, optimizing multimodal models (VLMs/LLMs)
+
+
+
+
+
+
+
+for real-time edge inference, and integrating perception outputs with downstream action and control systems.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Expertise includes multimodal perception, visual SLAM, real-time deployment, edge AI optimization,
+
+
+
+
+
+
+
+and production-scale machine learning systems. 
+
+
+
+
+
+
+TECHNICAL SKILLS
+
+
+
+Skill Area
+
+
+
+Details
+
+
+
+VLA / Multimodal 
+
+
+
+Vision–Language–Action (VLA), Vision–Language Models (VLM), Multimodal LLM Deployment, Embodied AI, Real-time Decision Pipelines 
+
+
+
+Perception &amp; Vision 
+
+
+
+
+YOLO, CLIP, Object Detection, DeepSORT Tracking, Face Recognition, Scene Understanding, Sensor Fusion 
+
+
+
+
+Robotics &amp; Spatial Intelligence 
+
+
+
+
+
+
+
+Visual SLAM, Localization, Spatial Mapping, Trajectory Understanding
+
+
+
+Edge AI &amp; Systems 
+
+
+
+ONNX, TensorRT, Model Quantization, Knowledge Distillation, Hardware Acceleration, Edge SoC Deployment 
+
+
+
+
+
+
+
+
+
+
+
+Programming
+
+
+
+
+
+
+
+Python (10 years), C/C++ (8 years), C#/.NET (3 years), SQL
+
+
+
+
+
+
+
+Infrastructure 
+
+
+
+
+
+
+
+Docker, CI/CD, REST APIs, AWS, Azure 
+
+
+
+
+
+
+
+
+
+PROFESSIONAL EXPERIENCE
+
+
+
+Principal Machine Learning Engineer | Resideo Inc. (Honeywell Home), NYSE: REZI    Mar 2024 - Present
+
+
+
+Key project: Vision understanding and multimodal large-model inference on edge SoCs
+
+
+
+• Designed and optimized multimodal large model inference (e.g., LLaMA3, GPT, YOLO, CLIP) on edge SoCs (Oclea) for real-time video understanding and mobile device deployment. 
+
+
+
+• Rewrote and customized backbone operators to support Clavery (.cvimodel) conversion and hardware-accelerated inference on Ambarella CV25 CV72-based chips. 
+
+
+
+• Implemented model compression, quantization, and knowledge distillation techniques, enabling large models to achieve SOTA inference performance under strict compute and memory constraints. 
+
+
+
+• Developed a general image/video understanding framework and contributed to the Oclea SDK, integrating video analysis pipelines with multimodal LLM capabilities. 
+
+
+
+• Built end-to-end machine vision solutions: from training and optimizing models → exporting ONNX → converting to Clavary → deploying to chip → real-time inference and post-processing. 
+
+
+
+• Designed and optimized pre-processing and post-processing pipelines, enabling downstream tasks like mobile tracking, sensor control, and motor actuation based on streaming video analytics. 
+
+
+
+• Implemented perception-to-action pipelines, enabling real-time triggering of device-level behaviors (e.g., tracking activation, sensor adjustment, motor actuation) based on visual scene interpretation. 
+
+
+
+• Integrated with RESTful APIs and edge-cloud pipelines to coordinate inference results with backend decision systems. 
+
+
+
+• Wrote extensive unit tests, stress tests, and deployed automated CI/CD testing pipelines to ensure reliability and performance on embedded devices. 
+
+
+
+• Worked closely with Yocto-based Linux distributions for embedded builds, optimizing cross-compilation and chip-specific SDK integrations. 
+
+
+
+Tech stack: Multimodal LLMs, C++, Python, Edge SoCs (Oclea,Infineon,Qualcomm), Yocto, Azure, YOLO,  ONNX, PyTorch, RESTful APIs, CI/CD
+
+
+
+
+Senior Machine Learning Engineer | EROAD Ltd, ASX: ERD    Mar 2022 - Mar 2024
+
+
+
+Key Project: ADAS perception, lane-level navigation, and multi-sensor vehicle intelligence platform.
+
+
+
+• Designed and implemented real-time perception pipelines for commercial vehicle dashcam systems, integrating deep learning models (YOLO, SSD) for object detection, tracking, and road segmentation.
+• Deployed perception and navigation modules across large-scale commercial vehicle fleets operating under real-world conditions.
+• Developed a lane-level navigation system combining lane detection models with visual SLAM, enabling spatial estimation of lane orientation and lane-center waypoint generation.
+• Enabled lane-aware trajectory alignment by projecting lane centerlines into vehicle navigation coordinates. 
+• Implemented camera-to-SLAM extrinsic calibration, allowing lane detections to be projected into global spatial coordinates for navigation-aware perception.
+• Designed multi-modal data processing pipelines integrating video streams, GPS signals, and vehicle telemetry, enabling robust scene understanding and trajectory-aware analytics.
+• Built sensor fusion workflows combining perception outputs with GPS and time-series vehicle data to improve obstacle detection and road-condition awareness.
+• Developed road condition detection and collision warning systems deployed on edge devices, supporting real-time safety monitoring.
+• Calculated vehicle pose and directional estimation relative to surrounding environments, enabling environment-aware mapping and localization.
+• Built scalable AWS-based data infrastructure for processing large-scale fleet sensor and video datasets using SageMaker and containerized workflows.
+• Optimized inference pipelines for edge-device deployment using C++, PyTorch, and Android-based environments.
+• Designed scalable ETL pipelines supporting continuous model training, evaluation, and deployment across distributed systems.
+• Implemented automated testing, validation, and CI/CD pipelines to ensure production-grade reliability of perception modules.
+
+
+
+Tech stack: C++, Python, OpenCV, vSLAM, GPS Processing, Sensor Fusion, Edge AI, Video Analytics, PyTorch , Docker, CI/CD 
+
+
+
+
+Machine Learning Engineer | StayinFront Ltd    Jun 2021 - Feb 2022
+
+
+
+Key project: Machine learning model for grocery detection
+
+
+
+• Designed a computer vision framework for grocery and supermarket analysis, including stock forecasting and price-tag recognition.
+
+
+
+• Developed backend services and ML models for detecting price tags and SKU information from shelf and packaging images.
+
+
+
+• Supported AWS S3/EC2 integration and warehouse data processing through DynamoDB and Python services.
+
+
+
+Tech stack: Python, Keras, TensorFlow, PySpark, DynamoDB, Flask, AWS
+
+
+
+
+Machine Learning Engineer | BuildingEstimates.com    Sep 2020 - Apr 2021
+
+
+
+Key project: Machine learning for plan detection
+
+
+
+• Developed building information extraction and plan-recognition solutions covering elevation, floor, and roof plan analysis.
+
+
+
+• Designed framework architecture for building material analysis and quantity-survey information extraction.
+
+
+
+• Implemented Python and Flask services on GCP for cloud-based image processing and plan management.
+
+
+
+Tech stack: Python, Pandas, NumPy, Flask, GCP, Kubernetes
+
+
+
+Data Engineer | Woolworths Group, ASX: WOW (World 500)    Sep 2017 - Sep 2019
+
+
+
+Key project: Data warehouse, logistics platform, and cross-border e-commerce payments
+
+
+
+• Integrated enterprise platforms and third-party ERP systems, including SAP-related data workflows and payment interfaces.
+
+
+
+• Developed data virtualization and user-facing interfaces in .NET and maintained deployment records and reporting through SQL.
+
+
+
+• Supported secure data procedures, stock-management logic, and logistics/payment system development in an Agile delivery environment.
+
+
+
+Tech stack: C#, Python, Docker, Oracle, SAP, MS SQL Server
+
+
+
+Full Stack Developer | New Image International Ltd    Jun 2014 - May 2017
+
+
+
+Key project: E-commerce platform and ERP system
+
+
+
+• Developed order-processing and customer-management workflows for e-commerce and ERP platforms.
+
+
+
+• Built frontend and web features, supported UX design activities, and contributed to online payment gateway integration.
+
+
+
+• Worked across web, mobile, SEO/SEM, and analytics tasks in a full-stack development role.
+
+
+
+Tech stack: C#/.NET, MS SQL, HTML5, CSS3, React Native, Alicloud
+
+
+
+Software Developer | Huawei Symantec Technology Ltd. (World 500)     Dec 2010 - Aug 2013
+
+
+
+Key project: Pattern recognition and detection systems
+
+
+
+• Developed industrial software solutions involving statistical process control, service-oriented architecture, and multithreaded Linux applications.
+
+
+
+• Worked on radiation detection and electromagnetic spectrum analytics projects with image and signal-processing components.
+
+
+
+• Contributed to code optimization, version control, and cross-team delivery across frontend and backend functions.
+
+
+
+Tech stack: C/C++, Linux, OpenCV, GDB, Apache Subversion
+
+
+
+Software Developer | Topsec Network Security Co., Ltd. , 002212.SZ    Oct 2007 - Mar 2010
+
+
+
+Key project: Intrusion detection systems
+
+
+
+• Developed Linux-based intrusion detection and network attack monitoring solutions, including kernel-level packet analysis and filtering.
+
+
+
+• Worked with drivers, network protocols, mutexes, semaphores, and Linux debugging tools for system-level development.
+
+
+
+• Supported detection and defense of distributed denial-of-service attacks and assisted QA with deployment and debugging.
+
+
+
+Tech stack: C/C++, Linux, GDB, KDB, CMake, Valgrind
+
+
+
+
+
+
+EDUCATION
+
+
+
+Doctor of Philosophy (PhD) - Auckland University of Technology, New Zealand    Jan 2019 - Feb 2023
+
+
+
+Research topic: Vision-driven Semantic SLAM for Scene Understanding and Autonomous Systems, focusing on visual perception, semantic mapping, and robust localization in dynamic environments. 
+
+
+
+Doctoral Research / Prior Research Study - Northwestern Polytechnical University, China    Sep 2010 - May 2014
+
+
+
+Research topic: Learning-augmented robust control for complex dynamic systems
+
+
+
+Master of Science - Sichuan Normal University, China    Sep 2007 - Jul 2010
+
+
+
+Major: Computer Software and Theory
+
+
+
+Bachelor of Engineering - Sichuan Normal University, China    Sep 2003 - Jul 2007
+
+
+
+Major: Data Science and Electronic Commerce
+
+
+
+
+
+
+SELECTED PROJECT HIGHLIGHTS
+
+
+
+
+
+Lane-Level Navigation using Lane Detection + vSLAM Extrinsic Calibration
+
+
+
+Designed a lane-level navigation system that integrates lane detection models with an existing visual SLAM framework through extrinsic calibration, enabling accurate spatial alignment between perception outputs and SLAM coordinates.
+
+
+
+Key Contributions:
+• Developed a lane detection + vSLAM fusion pipeline to estimate lane orientation and spatial geometry in the global coordinate frame.
+• Implemented camera-to-SLAM extrinsic calibration, allowing lane detections to be projected into 3D space for navigation-aware perception.
+• Designed algorithms to compute lane-center waypoints, enabling vehicles to align navigation trajectories with lane centerlines.
+
+
+
+• Integrated lane-level spatial reasoning into vehicle waypoint planning workflows, improving navigation accuracy in real-world driving environments.
+• Validated the system using real vehicle data, supporting robust lane-aware localization and navigation.
+Technologies: C++, OpenCV, PyTorch, vSLAM, Camera Calibration, Lane Detection, Coordinate Transformation.
+
+
+
+
+
+
+
+Multimodal ADAS Perception and Road Intelligence System
+
+
+
+
+
+
+
+Designed a real-time ADAS perception platform integrating object detection, tracking, road segmentation, and multi-sensor fusion to improve vehicle safety and situational awareness.
+
+
+
+
+
+
+
+Key Contributions:
+• Built deep learning pipelines using object detection, tracking, and road segmentation models to interpret real-world driving scenes.
+• Designed sensor fusion workflows combining camera, GPS, and telemetry data for improved obstacle detection accuracy.
+• Developed road condition detection and collision warning modules deployed on embedded edge devices.
+• Implemented vehicle state estimation algorithms using GPS and time-series analysis to monitor vehicle behavior.
+• Built scalable AWS-based data processing infrastructure, enabling large-scale sensor and video analytics.
+Technologies: C++, PyTorch, OpenCV, Python, GPS Processing, Time-Series Analysis
+
+
+
+
+Visual SLAM Navigation System
+
+
+
+
+
+
+
+Designed a semantic visual SLAM system enabling robust localization, mapping, and spatial reasoning for autonomous driving environments.
+
+
+
+
+
+
+
+Key Contributions:
+• Implemented semantic mapping pipelines integrating perception outputs with SLAM-based localization.
+• Generated environment-aware spatial maps supporting downstream navigation and decision modules.
+• Improved robustness of localization in dynamic driving environments using sensor-driven updates.
+Technologies: vSLAM, OpenCV, C++, Sensor Fusion, Mapping
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACADEMIC SERVICE AND ACHIEVEMENTS
+
+
+
+• Reviewer for AAAI, VLDB, IEEE Systems Journal, IEEE TCSVT, IEEE TETCI, IEEE Access.
+
+
+
+• Three patents granted or accepted by the State Intellectual Property Office of the People's Republic of China.
+
+
+
+• Three software copyright patents granted by the Copyright Protection Center of China.
+
+
+
+- Telecommunications telephone fraud prevention method and system for voice-based semantic content analysis.
+
+
+
+- Method and system for access safety detection and isolation of virtualized users.
+
+
+
+- Method and system for detecting and defending multichannel network intrusion.
+
+
+
+
+
+
+SELECTED PUBLICATIONS
+
+
+
+• Bo Ma, Jinsong Wu, Weiqi Yan, and Hongjiang Wei. CT-to-X-ray Distillation Under Tiny Paired Cohorts: An Evidence-Bounded Reproducible Pilot Study. arXiv preprint arXiv:2603.29167, 2026.
+
+
+
+• Bo Ma, Jinsong Wu, Weiqi Yan, Catherine Shi, and Minh Nguyen. PPEDCRF: Privacy-Preserving Enhanced Dynamic CRF for Location-Privacy Protection for Sequence Videos with Minimal Detection Degradation. arXiv preprint arXiv:2603.01593, 2026.
+
+
+
+• Bo Ma, Jinsong Wu, Weiqi Yan. TSDCRF: Balancing Privacy and Multi-Object Tracking via Time-Series CRF and Normalized Control Penalty. arXiv preprint arXiv:2603.13667, 2026.
+
+
+
+• Bo Ma, Jinsong Wu, Wei Qi Yan. REAEDP: Entropy-Calibrated Differentially Private Data Release with Formal Guarantees and Attack-Based Evaluation. arXiv preprint arXiv:2603.13709, 2026.
+
+
+
+• Bo Ma, Jinsong Wu, Wei Qi Yan. Bodhi VLM: Privacy-Alignment Modeling for Hierarchical Visual Representations in Vision Backbones and VLM Encoders via Bottom-Up and Top-Down Feature Search. arXiv preprint arXiv:2603.13728, 2026.
+
+
+
+• Bo Ma, Edward M.-K. Lai, Wei Q. Yan, and Jinsong Wu. A privacy-preserving word embedding text classification model based on privacy boundary constructed by deep belief network. Multimedia Tools and Applications, 83(10): 30181-30206, 2024.
+
+
+
+• Bo Ma, Jinsong Wu, and Wei Q. Yan. JudPriNet: Video transition detection based on semantic relationship and Monte Carlo sampling. Intelligent and Converged Networks, 5(2): 134-146, 2024.
+
+
+
+• Bo Ma, Jinsong Wu, Edward M.-K. Lai, and Shuai Hu. PPDTSA: Privacy-preserving deep transformation self-attention framework for object detection. In IEEE Global Communications Conference (GLOBECOM), 2021.
+
+
+
+• Bo Ma, Wei Q. Yan, Edward M.-K. Lai, and Jinsong Wu. A New Noise Generating Method Based on Gaussian Sampling for Privacy Preservation. In International Symposium on Geometry and Vision, 2021.
+
+
+
+• Bo Ma, Jingsong Wu, William Liu, Luca Chiaraviglio, and Xiaohu Ming. Combating Hard- or Soft-Disasters with Privacy-Preserving Federated Mobile Buses-and-Drones-based Networks. In IEEE International Conference on Information Reuse and Integration for Data Science (IRI), pp. 31-36, 2020.
+
+
+
+• Bo Ma, Jingsong Wu, Shuang Song, and William Liu. Assuring Privacy-Preservation in Mining Medical Text Materials for COVID-19 Cases: A Natural Language Processing Perspective. Open Journal of Internet of Things, 6(1): 6-13, 2020.
+
+
+
+• Dejun Mu, Wei Hu, Baolei Mao, and Bo Ma. A Bottom-up Approach to Verifiable Embedded System Information Flow Security. IET Information Security, 8(1): 12-17, 2014.
+
+
+
+• Bo Ma, Dejun Mu, Wei Fan, and Wei Hu. Improvements the Seccomp Sandbox Based on PBE Theory. In 2013 IEEE 27th International Conference on Advanced Information Networking and Applications Workshops (WAINA), pp. 323-328, 2013.
+
+
+
+
+
+REFERENCES
+
+
+
+References available on request.
+
+
+
+
+

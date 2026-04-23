@@ -1,0 +1,1062 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bob Ma — Perception, on the Edge</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #05070B;
+    --bg-2: #0A0E14;
+    --ink: #E8EEF5;
+    --ink-dim: #8892A0;
+    --ink-faint: #4A5260;
+    --line: rgba(120, 180, 220, 0.14);
+    --line-2: rgba(120, 180, 220, 0.28);
+    --cyan: #00E5FF;
+    --cyan-soft: #5AF0FF;
+    --magenta: #FF2E93;
+    --amber: #FFB454;
+    --green: #7DFFA8;
+    --display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --serif: "Instrument Serif", "Times New Roman", serif;
+  }
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; background:#000; color:var(--ink); font-family:var(--display); }
+
+  deck-stage{ background:#000; }
+  section.slide{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--display);
+    letter-spacing: -0.005em;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Shared chrome: corner crosshairs, grid, header rail ─────────────── */
+  .chrome{ position:absolute; inset:0; pointer-events:none; }
+  .grid-bg{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at center, #000 10%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 10%, transparent 75%);
+    opacity: 0.9;
+  }
+  .grid-fine{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(to right, rgba(120,180,220,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(120,180,220,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .corner{ position:absolute; width:24px; height:24px; }
+  .corner::before, .corner::after{
+    content:""; position:absolute; background:var(--cyan);
+  }
+  .corner::before{ width:100%; height:1px; }
+  .corner::after{ height:100%; width:1px; }
+  .corner.tl{ top:40px; left:40px; }
+  .corner.tl::before{ top:0; left:0; }
+  .corner.tl::after{ top:0; left:0; }
+  .corner.tr{ top:40px; right:40px; }
+  .corner.tr::before{ top:0; right:0; }
+  .corner.tr::after{ top:0; right:0; }
+  .corner.bl{ bottom:40px; left:40px; }
+  .corner.bl::before{ bottom:0; left:0; }
+  .corner.bl::after{ bottom:0; left:0; }
+  .corner.br{ bottom:40px; right:40px; }
+  .corner.br::before{ bottom:0; right:0; }
+  .corner.br::after{ bottom:0; right:0; }
+
+  .rail{
+    position:absolute; left:40px; right:40px; top:40px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--mono); font-size:16px; color:var(--ink-faint);
+    letter-spacing: 0.1em; text-transform:uppercase;
+  }
+  .rail .dot{ width:8px; height:8px; border-radius:50%; background:var(--cyan); display:inline-block; margin-right:10px; box-shadow:0 0 12px var(--cyan); }
+  .rail .right{ display:flex; gap:28px; align-items:center; }
+
+  .footrail{
+    position:absolute; left:40px; right:40px; bottom:40px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--mono); font-size:14px; color:var(--ink-faint);
+    letter-spacing: 0.1em; text-transform:uppercase;
+  }
+  .footrail .tick{ color: var(--cyan); }
+
+  /* ── Type system ─────────────────────────────────────────────────────── */
+  .kicker{
+    font-family: var(--mono);
+    font-size: 22px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cyan);
+  }
+  .title{
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 108px;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .title em{ font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--cyan-soft); letter-spacing: -0.01em; }
+  .h2{
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 72px;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .h2 em{ font-family: var(--serif); font-style:italic; font-weight:400; color:var(--cyan-soft); }
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 20px;
+    color: var(--ink-dim);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .lede{ font-size: 36px; line-height:1.35; color:var(--ink); max-width: 1400px; letter-spacing:-0.01em; }
+  .body{ font-size: 26px; line-height:1.5; color:var(--ink); }
+  .small{ font-size: 20px; color: var(--ink-dim); font-family: var(--mono); letter-spacing: 0.02em; }
+  .num-display{ font-family: var(--display); font-weight: 300; letter-spacing: -0.04em; }
+  .mono{ font-family: var(--mono); }
+
+  /* ── Reusable components ─────────────────────────────────────────────── */
+  .chip{
+    display:inline-flex; align-items:center; gap:10px;
+    padding: 8px 14px;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    font-family: var(--mono); font-size: 18px;
+    color: var(--ink-dim);
+    background: rgba(0, 229, 255, 0.03);
+  }
+  .chip .b{ color: var(--ink); }
+  .chip.c-c{ color: var(--cyan); border-color: rgba(0,229,255,0.45); background:rgba(0,229,255,0.06); }
+  .chip.c-m{ color: var(--magenta); border-color: rgba(255,46,147,0.45); background:rgba(255,46,147,0.06); }
+  .chip.c-a{ color: var(--amber); border-color: rgba(255,180,84,0.45); background:rgba(255,180,84,0.06); }
+
+  .card{
+    border: 1px solid var(--line-2);
+    padding: 36px 40px;
+    background: linear-gradient(180deg, rgba(0,229,255,0.03), rgba(0,229,255,0.0));
+    position: relative;
+  }
+  .card .nick{
+    position:absolute; top:-1px; left:-1px;
+    width: 24px; height: 1px; background: var(--cyan);
+  }
+  .card .nick::after{
+    content:""; position:absolute; top:0; left:0; width:1px; height:24px; background:var(--cyan);
+  }
+
+  /* ── Slide 01: Title ─────────────────────────────────────────────────── */
+  .s-title{
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 80px;
+    padding: 180px 120px 160px;
+    align-content: center;
+    align-items: center;
+  }
+  .s-title .big{
+    font-size: 140px; font-weight: 500; line-height: 0.95;
+    letter-spacing: -0.045em;
+    margin: 0;
+  }
+  .s-title .big .line2{ display:block; color: var(--cyan); }
+  .s-title .big em{ font-family: var(--serif); font-style:italic; font-weight:400; color: var(--cyan-soft); letter-spacing: -0.01em; }
+  .s-title .sub{
+    font-family: var(--mono); font-size: 22px; color: var(--ink-dim);
+    letter-spacing: 0.06em; margin-top: 56px; line-height: 1.7;
+  }
+  .s-title .sub .v{ color: var(--ink); }
+
+  .portrait-frame{
+    position: relative;
+    width: 520px; height: 620px;
+    justify-self: end;
+    align-self: center;
+  }
+  .portrait-frame .img{
+    position: absolute; inset: 0;
+    background-image: url("../assets/photo.jpg");
+    background-size: cover;
+    background-position: center 20%;
+    filter: grayscale(0.1) contrast(1.05);
+  }
+  .portrait-frame::before{
+    content:""; position:absolute; inset:-16px;
+    border: 1px solid var(--line-2);
+    pointer-events: none;
+  }
+  .portrait-frame .scan{
+    position:absolute; inset:0; pointer-events:none;
+    background: repeating-linear-gradient(0deg, rgba(0,229,255,0.0) 0px, rgba(0,229,255,0.0) 3px, rgba(0,229,255,0.06) 3px, rgba(0,229,255,0.06) 4px);
+    mix-blend-mode: screen;
+  }
+  .portrait-frame .corner2{ position:absolute; width:28px; height:28px; border: 1.5px solid var(--cyan); }
+  .portrait-frame .c-tl{ top:-16px; left:-16px; border-right:none; border-bottom:none; }
+  .portrait-frame .c-tr{ top:-16px; right:-16px; border-left:none; border-bottom:none; }
+  .portrait-frame .c-bl{ bottom:-16px; left:-16px; border-right:none; border-top:none; }
+  .portrait-frame .c-br{ bottom:-16px; right:-16px; border-left:none; border-top:none; }
+  .portrait-frame .tag{
+    position: absolute; bottom: -16px; left: 50%; transform: translate(-50%, 50%);
+    font-family: var(--mono); font-size: 16px; color: var(--bg);
+    background: var(--cyan); padding: 6px 14px; letter-spacing: 0.2em; text-transform: uppercase;
+    white-space:nowrap;
+  }
+  .portrait-frame .bbox{
+    position:absolute; top: 14%; left: 24%;
+    width: 54%; height: 36%;
+    border: 1px solid var(--cyan);
+    box-shadow: 0 0 20px rgba(0,229,255,0.25);
+  }
+  .portrait-frame .bbox::before{
+    content: "FACE · 0.998"; position: absolute; top: -26px; left: -1px;
+    background: var(--cyan); color: var(--bg);
+    font-family: var(--mono); font-size: 12px; padding: 3px 6px; letter-spacing: 0.1em;
+  }
+
+  /* ── Slide 02: Arc timeline ──────────────────────────────────────────── */
+  .s-arc{ padding: 180px 120px 140px; display: grid; grid-template-rows: auto 1fr; gap: 60px; }
+  .timeline{
+    position: relative; margin-top: 40px;
+    height: 520px;
+  }
+  .tl-axis{
+    position:absolute; left:0; right:0; top: 220px; height:1px; background: var(--line-2);
+  }
+  .tl-axis::after{
+    content:""; position:absolute; right:0; top:-4px;
+    width:0; height:0; border-left:10px solid var(--cyan);
+    border-top:4px solid transparent; border-bottom:4px solid transparent;
+  }
+  .tl-node{
+    position:absolute; transform: translateX(-50%);
+    text-align:center; width: 200px;
+  }
+  .tl-node .dot{ width:14px; height:14px; border-radius:50%; background:var(--bg); border:2px solid var(--cyan); margin: 0 auto 16px; position:relative; }
+  .tl-node.now .dot{ background: var(--cyan); box-shadow: 0 0 24px var(--cyan); }
+  .tl-node .year{ font-family: var(--mono); font-size: 18px; color: var(--cyan); letter-spacing: 0.12em; }
+  .tl-node .role{ margin-top: 12px; font-size: 22px; font-weight:500; line-height:1.2; }
+  .tl-node .org{ margin-top: 6px; font-family: var(--mono); font-size: 16px; color: var(--ink-dim); }
+  .tl-node.above{ bottom: 286px; }
+  .tl-node.above .dot{ margin: 0 auto; position: relative; }
+  .tl-node.above .meta{ margin-bottom: 16px; }
+  .tl-node.above .stem{
+    position:absolute; left:50%; bottom: -72px; width:1px; height: 66px; background: var(--line-2);
+  }
+  .tl-node.below{ top: 228px; }
+  .tl-node.below .stem{
+    position:absolute; left:50%; top: -62px; width:1px; height: 56px; background: var(--line-2);
+  }
+
+  /* ── Slide 03: Resideo ──────────────────────────────────────────────── */
+  .s-resideo{ padding: 150px 120px 140px; }
+  .s-resideo .head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 70px; }
+  .s-resideo .grid{ display:grid; grid-template-columns: 1.1fr 1fr; gap: 70px; }
+  .stat-row{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 40px; }
+  .stat{ border-left: 1px solid var(--line-2); padding-left: 24px; }
+  .stat .n{ font-size: 84px; font-weight:400; line-height:1; letter-spacing: -0.04em; color: var(--cyan); font-family: var(--display); }
+  .stat .l{ margin-top:14px; font-family: var(--mono); font-size: 18px; color: var(--ink-dim); letter-spacing: 0.1em; text-transform: uppercase; line-height:1.4; }
+
+  .pipeline{
+    border: 1px solid var(--line-2);
+    padding: 26px 28px;
+    background: rgba(0,229,255,0.025);
+  }
+  .pipeline .ttl{ font-family: var(--mono); font-size: 16px; color: var(--ink-dim); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; }
+  .pipe-flow{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-family: var(--mono); font-size: 20px; color: var(--ink); }
+  .pipe-flow .step{ padding: 10px 14px; border:1px solid var(--line-2); background: rgba(0,0,0,0.4); }
+  .pipe-flow .arrow{ color: var(--cyan); }
+
+  .bullets{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap: 22px; }
+  .bullets li{ font-size: 28px; line-height:1.4; display:flex; gap:18px; padding-left: 4px; }
+  .bullets li::before{
+    content:""; display:inline-block; width:14px; height:14px; margin-top: 14px;
+    border: 1px solid var(--cyan); transform: rotate(45deg); flex-shrink:0;
+    background: rgba(0,229,255,0.2);
+  }
+
+  /* ── Slide 04: EROAD ─────────────────────────────────────────────────── */
+  .s-eroad{ padding: 150px 120px 140px; display:grid; grid-template-rows:auto 1fr; gap:60px;}
+  .scene{
+    position: relative;
+    border: 1px solid var(--line-2);
+    height: 640px;
+    background:
+      linear-gradient(180deg, rgba(0,229,255,0.04), transparent 60%),
+      #070A10;
+    overflow: hidden;
+  }
+  .scene svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .scene .label{
+    position:absolute;
+    font-family: var(--mono); font-size: 16px; color: var(--cyan);
+    letter-spacing: 0.1em;
+    padding: 4px 8px;
+    background: rgba(0,229,255,0.08);
+    border: 1px solid rgba(0,229,255,0.4);
+  }
+
+  /* ── Slide 05: PhD SLAM ──────────────────────────────────────────────── */
+  .s-phd{ padding: 140px 120px 140px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items:center;}
+  .phd-left{}
+  .phd-map{
+    position: relative;
+    width: 100%; aspect-ratio: 1/1;
+    border: 1px solid var(--line-2);
+    background: #060A12;
+    overflow: hidden;
+  }
+  .phd-map svg{ position:absolute; inset:0; width:100%; height:100%; }
+
+  /* ── Slide 06: Papers ────────────────────────────────────────────────── */
+  .s-papers{ padding: 140px 120px 140px; }
+  .papers-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 28px 40px; margin-top: 50px; }
+  .paper{
+    border: 1px solid var(--line-2);
+    padding: 24px 28px;
+    position: relative;
+    background: rgba(0,229,255,0.02);
+  }
+  .paper .yr{ font-family: var(--mono); font-size: 14px; color: var(--cyan); letter-spacing: 0.12em; }
+  .paper .tt{ font-family: var(--display); font-size: 26px; line-height: 1.25; margin: 10px 0 10px; letter-spacing: -0.01em; color: var(--ink); font-weight: 500;}
+  .paper .tt em{ font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--cyan-soft); }
+  .paper .ven{ font-family: var(--mono); font-size: 14px; color: var(--ink-dim); }
+  .paper.hl{ background: rgba(0,229,255,0.06); border-color: rgba(0,229,255,0.5); }
+  .paper.hl::before{
+    content:""; position:absolute; top:0; left:0; width:100%; height:2px; background: var(--cyan);
+  }
+
+  /* ── Slide 07: Tech stack ────────────────────────────────────────────── */
+  .s-stack{ padding: 150px 120px 140px;}
+  .stack-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 60px; }
+  .stack-col .hd{
+    font-family: var(--mono); font-size: 18px; letter-spacing: 0.2em; color: var(--cyan);
+    text-transform: uppercase; padding-bottom: 16px; border-bottom: 1px solid var(--line-2);
+    margin-bottom: 20px;
+  }
+  .stack-col ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px; }
+  .stack-col li{ font-size: 22px; color: var(--ink); font-weight: 400;}
+  .stack-col li .y{ font-family: var(--mono); font-size: 15px; color: var(--ink-faint); margin-left: 10px; }
+
+  /* ── Slide 08: Patents & Service ─────────────────────────────────────── */
+  .s-ps{ padding: 150px 120px 140px; display:grid; grid-template-columns: 1fr 1fr; gap:80px;}
+  .ps-col h2{ margin: 0 0 36px; }
+  .ps-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:22px;}
+  .ps-list li{
+    font-size: 22px; line-height: 1.4;
+    padding: 18px 20px;
+    border: 1px solid var(--line-2);
+    display:flex; gap:20px; align-items:flex-start;
+  }
+  .ps-list li .idx{
+    font-family: var(--mono); font-size: 14px; color: var(--cyan);
+    letter-spacing: 0.15em; min-width: 40px;
+  }
+
+  /* ── Slide 09: Looking for ──────────────────────────────────────────── */
+  .s-seek{ padding: 160px 120px 140px; display:grid; grid-template-columns: 1fr; gap: 60px;}
+  .seek-head{ max-width: 1400px; }
+  .seek-card-row{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px;}
+  .seek-card{
+    border: 1px solid var(--line-2);
+    padding: 36px 32px;
+    background: linear-gradient(180deg, rgba(0,229,255,0.05), transparent 80%);
+    position: relative;
+    min-height: 260px;
+  }
+  .seek-card .ic{
+    font-family: var(--mono); font-size: 15px; color: var(--cyan); letter-spacing: 0.15em;
+    margin-bottom: 24px;
+  }
+  .seek-card .t{ font-size: 32px; font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 16px; }
+  .seek-card .t em{ font-family: var(--serif); font-style: italic; color: var(--cyan-soft); font-weight: 400; }
+  .seek-card .d{ font-size: 20px; color: var(--ink-dim); line-height: 1.5; font-family: var(--mono); }
+
+  /* ── Slide 10: Contact ───────────────────────────────────────────────── */
+  .s-contact{ padding: 180px 120px 140px; display:grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items:center;}
+  .contact-list{ list-style:none; padding:0; margin: 60px 0 0; display:flex; flex-direction:column; gap:28px;}
+  .contact-list li{ display:grid; grid-template-columns: 180px 1fr; gap:30px; align-items:baseline; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+  .contact-list .k{ font-family: var(--mono); font-size:18px; color: var(--cyan); letter-spacing: 0.15em; text-transform: uppercase; }
+  .contact-list .v{ font-size: 30px; font-weight: 400; color: var(--ink); font-family: var(--display); }
+  .sign-off{
+    position: relative;
+    width:100%; aspect-ratio: 1/1;
+    border: 1px solid var(--line-2);
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(0,229,255,0.14), transparent 60%),
+      #070A10;
+    overflow: hidden;
+  }
+  .sign-off svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .sign-off .center-mark{
+    position:relative; z-index:2;
+    width: 340px; height:340px;
+    border:1px solid rgba(0,229,255,0.5); border-radius: 50%;
+    display:grid; place-items:center;
+    background: radial-gradient(circle at center, rgba(0,229,255,0.15), transparent 70%);
+  }
+  .sign-off .center-mark::before{
+    content:""; position:absolute; inset:-30px;
+    border:1px dashed rgba(0,229,255,0.28); border-radius:50%;
+    animation: rotate 60s linear infinite;
+  }
+  .sign-off .center-mark .bm{
+    font-family: var(--display); font-size: 140px; font-weight: 300; letter-spacing: -0.04em;
+    color: var(--cyan-soft);
+  }
+  @keyframes rotate{ to { transform: rotate(360deg); } }
+
+  /* pulse for "NOW" tag */
+  @keyframes pulse-cyan{
+    0%, 100%{ box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.55); }
+    50%{ box-shadow: 0 0 0 12px rgba(0, 229, 255, 0); }
+  }
+  .pulse{ animation: pulse-cyan 2.4s ease-out infinite; }
+
+  /* divider bar */
+  .bar{ height:1px; background: var(--line-2); margin: 40px 0; }
+
+  /* readouts */
+  .readout{
+    font-family: var(--mono); font-size: 16px; color: var(--ink-dim);
+    display:flex; gap: 32px; align-items:center;
+  }
+  .readout .k{ color: var(--ink-faint); }
+  .readout .v{ color: var(--ink); }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- 01: TITLE ─────────────────────────────────────────────────────── -->
+  <section class="slide s-title" data-label="Cover">
+    <div class="chrome">
+      <div class="grid-bg"></div>
+      <div class="corner tl"></div><div class="corner tr"></div>
+      <div class="corner bl"></div><div class="corner br"></div>
+      <div class="rail">
+        <div><span class="dot pulse"></span>BM · 2026 · AUCKLAND</div>
+        <div class="right"><span>VLA / MULTIMODAL AI</span><span>//</span><span>DECK 01 — INTRO</span></div>
+      </div>
+      <div class="footrail">
+        <div>LAT −36.848° · LON 174.762°</div>
+        <div><span class="tick">■</span> LIVE</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="kicker" style="margin-bottom: 48px;">BOB MA · 马博</div>
+      <h1 class="big">
+        Perception,
+        <span class="line2">on the <em>edge.</em></span>
+      </h1>
+      <div class="sub">
+        <span class="v">PhD, Vision-driven Semantic SLAM</span><br>
+        Principal ML Engineer — Resideo / Honeywell Home<br>
+        <span style="color:var(--cyan)">▸</span> Vision · Language · Action — shipped on devices
+      </div>
+    </div>
+
+    <div class="portrait-frame">
+      <div class="img"></div>
+      <div class="scan"></div>
+      <div class="bbox"></div>
+      <div class="corner2 c-tl"></div>
+      <div class="corner2 c-tr"></div>
+      <div class="corner2 c-bl"></div>
+      <div class="corner2 c-br"></div>
+      <div class="tag">SUBJECT — BOB MA</div>
+    </div>
+  </section>
+
+  <!-- 02: ARC ─────────────────────────────────────────────────────── -->
+  <section class="slide s-arc" data-label="Arc">
+    <div class="chrome">
+      <div class="grid-bg"></div>
+      <div class="corner tl"></div><div class="corner tr"></div>
+      <div class="corner bl"></div><div class="corner br"></div>
+      <div class="rail">
+        <div><span class="dot"></span>02 / THE ARC</div>
+        <div class="right"><span>KERNEL → EMBODIMENT</span><span>//</span><span>~16 YEARS</span></div>
+      </div>
+      <div class="footrail"><div>TRAJECTORY — SINGLE ENGINEER, MANY LAYERS</div><div>02/10</div></div>
+    </div>
+
+    <div>
+      <div class="kicker" style="margin-bottom:24px;">TRAJECTORY</div>
+      <h2 class="h2">From kernel drivers to <em>embodied AI</em>.</h2>
+      <div class="lede" style="margin-top:30px; color:var(--ink-dim); font-size:28px; max-width:1400px;">
+        I've spent 16 years climbing the stack — packet filters, industrial vision, cloud data, SLAM, now VLMs on SoCs. Every layer informs the next.
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-axis"></div>
+
+      <div class="tl-node above" style="left: 8%;">
+        <div class="meta">
+          <div class="year">2007</div>
+          <div class="role">Kernel &amp; Network Security</div>
+          <div class="org">Topsec</div>
+        </div>
+        <div class="dot"></div>
+        <div class="stem"></div>
+      </div>
+
+      <div class="tl-node below" style="left: 24%;">
+        <div class="dot"></div>
+        <div class="stem"></div>
+        <div class="year" style="margin-top: 74px;">2010</div>
+        <div class="role">Pattern Recognition</div>
+        <div class="org">Huawei Symantec</div>
+      </div>
+
+      <div class="tl-node above" style="left: 40%;">
+        <div class="meta">
+          <div class="year">2017</div>
+          <div class="role">Data Engineering</div>
+          <div class="org">Woolworths · ASX:WOW</div>
+        </div>
+        <div class="dot"></div>
+        <div class="stem"></div>
+      </div>
+
+      <div class="tl-node below" style="left: 56%;">
+        <div class="dot"></div>
+        <div class="stem"></div>
+        <div class="year" style="margin-top: 74px;">2019</div>
+        <div class="role">PhD · Semantic SLAM</div>
+        <div class="org">AUT, New Zealand</div>
+      </div>
+
+      <div class="tl-node above" style="left: 72%;">
+        <div class="meta">
+          <div class="year">2022</div>
+          <div class="role">ADAS · Vehicle AI</div>
+          <div class="org">EROAD · ASX:ERD</div>
+        </div>
+        <div class="dot"></div>
+        <div class="stem"></div>
+      </div>
+
+      <div class="tl-node below now" style="left: 90%;">
+        <div class="dot"></div>
+        <div class="stem"></div>
+        <div class="year" style="margin-top: 74px; color:var(--cyan);">2024 —</div>
+        <div class="role" style="color:var(--cyan);">Principal ML Engineer</div>
+        <div class="org">Resideo / Honeywell · NYSE:REZI</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03: RESIDEO ─────────────────────────────────────────────────── -->
+  <section class="slide s-resideo" data-label="Resideo">
+    <div class="chrome">
+      <div class="grid-bg"></div>
+      <div class="corner tl"></div><div class="corner tr"></div>
+      <div class="corner bl"></div><div class="corner br"></div>
+      <div class="rail">
+        <div><span class="dot pulse"></span>03 / NOW — RESIDEO / HONEYWELL HOME</div>
+        <div class="right"><span>MAR 2024 — PRESENT</span><span>//</span><span>NYSE: REZI</span></div>
+      </div>
+      <div class="footrail"><div>PRINCIPAL ML ENGINEER · EDGE / MULTIMODAL</div><div>03/10</div></div>
+    </div>
+
+    <div class="head">
+      <div>
+        <div class="kicker" style="margin-bottom:28px;">CURRENT ROLE</div>
+        <h2 class="h2">Multimodal LLMs,<br><em>on edge SoCs.</em></h2>
+      </div>
+      <div class="readout" style="flex-direction:column; align-items:flex-end; gap:8px; text-align:right;">
+        <div><span class="k">TARGET · </span><span class="v">Ambarella CV25 / CV72 · Oclea</span></div>
+        <div><span class="k">RUNTIME · </span><span class="v">ONNX → TensorRT → .cvimodel</span></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <div class="stat-row">
+          <div class="stat"><div class="n">LLaMA3</div><div class="l">Multimodal<br>on-device</div></div>
+          <div class="stat"><div class="n">CV25<br>CV72</div><div class="l">Ambarella<br>edge SoCs</div></div>
+          <div class="stat"><div class="n">INT8</div><div class="l">Quantised<br>distilled</div></div>
+        </div>
+
+        <div class="pipeline">
+          <div class="ttl">END-TO-END PIPELINE</div>
+          <div class="pipe-flow">
+            <span class="step">Train</span><span class="arrow">→</span>
+            <span class="step">ONNX</span><span class="arrow">→</span>
+            <span class="step">Clavary</span><span class="arrow">→</span>
+            <span class="step">On-chip</span><span class="arrow">→</span>
+            <span class="step">Real-time</span><span class="arrow">→</span>
+            <span class="step" style="color:var(--cyan); border-color:var(--cyan);">Action</span>
+          </div>
+        </div>
+      </div>
+
+      <ul class="bullets">
+        <li>Designed multimodal inference (LLaMA3, CLIP, YOLO) for real-time video understanding on Ambarella SoCs.</li>
+        <li>Rewrote backbone operators for Clavary <span class="mono" style="color:var(--cyan)">(.cvimodel)</span> conversion and hardware acceleration.</li>
+        <li>Perception-to-action: triggers tracking, sensor &amp; motor control from visual scene interpretation.</li>
+        <li>Contributed a general image/video understanding framework to the Oclea SDK.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 04: EROAD ─────────────────────────────────────────────────── -->
+  <section class="slide s-eroad" data-label="EROAD">
+    <div class="chrome">
+      <div class="grid-bg"></div>
+      <div class="corner tl"></div><div class="corner tr"></div>
+      <div class="corner bl"></div><div class="corner br"></div>
+      <div class="rail">
+        <div><span class="dot"></span>04 / EROAD · COMMERCIAL FLEETS</div>
+        <div class="right"><span>MAR 2022 — MAR 2024</span><span>//</span><span>ASX: ERD</span></div>
+      </div>
+      <div class="footrail"><div>ADAS + LANE-LEVEL NAV + VSLAM</div><div>04/10</div></div>
+    </div>
+
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+        <div>
+          <div class="kicker" style="margin-bottom:28px;">PRIOR · SENIOR ML ENGINEER</div>
+          <h2 class="h2">Lane-level perception<br>for <em>commercial fleets.</em></h2>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; max-width:720px; justify-content:flex-end;">
+          <span class="chip c-c">YOLO · SSD</span>
+          <span class="chip c-c">vSLAM</span>
+          <span class="chip c-c">Camera↔SLAM calib</span>
+          <span class="chip c-c">GPS fusion</span>
+          <span class="chip c-c">AWS SageMaker</span>
+          <span class="chip c-c">C++ / PyTorch</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scene">
+      <svg viewBox="0 0 1600 640" preserveAspectRatio="none">
+        <!-- road perspective -->
+        <defs>
+          <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0E1520"/>
+            <stop offset="1" stop-color="#1B2638"/>
+          </linearGradient>
+          <linearGradient id="fadeCyan" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00E5FF" stop-opacity="0"/>
+            <stop offset="1" stop-color="#00E5FF" stop-opacity="0.9"/>
+          </linearGradient>
+        </defs>
+        <polygon points="620,120 980,120 1400,640 200,640" fill="url(#road)"/>
+        <!-- lane lines -->
+        <polygon points="780,120 820,120 900,640 700,640" fill="rgba(0,229,255,0.12)"/>
+        <polygon points="820,120 780,120 700,640 900,640" fill="none"/>
+        <!-- lane detected dashes -->
+        <g stroke="#00E5FF" stroke-width="3">
+          <line x1="720" y1="200" x2="704" y2="240"/>
+          <line x1="700" y1="280" x2="676" y2="340"/>
+          <line x1="670" y1="380" x2="640" y2="460"/>
+          <line x1="630" y1="500" x2="590" y2="600"/>
+          <line x1="880" y1="200" x2="896" y2="240"/>
+          <line x1="900" y1="280" x2="924" y2="340"/>
+          <line x1="930" y1="380" x2="960" y2="460"/>
+          <line x1="970" y1="500" x2="1010" y2="600"/>
+        </g>
+        <!-- lane center waypoints -->
+        <g>
+          <circle cx="800" cy="230" r="6" fill="#FF2E93"/>
+          <circle cx="800" cy="320" r="7" fill="#FF2E93"/>
+          <circle cx="800" cy="430" r="9" fill="#FF2E93"/>
+          <circle cx="800" cy="560" r="11" fill="#FF2E93"/>
+          <path d="M 800 230 L 800 560" stroke="#FF2E93" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.8"/>
+        </g>
+        <!-- detected vehicle -->
+        <g>
+          <rect x="720" y="150" width="160" height="90" fill="none" stroke="#FFB454" stroke-width="2"/>
+          <rect x="720" y="128" width="110" height="18" fill="#FFB454"/>
+          <text x="726" y="142" font-family="JetBrains Mono" font-size="12" fill="#05070B" font-weight="500">CAR 0.96</text>
+        </g>
+        <!-- horizon glow -->
+        <rect x="0" y="110" width="1600" height="10" fill="url(#fadeCyan)" transform="translate(0,-10)"/>
+        <!-- grid floor -->
+        <g stroke="rgba(0,229,255,0.18)" stroke-width="1">
+          <line x1="200" y1="640" x2="1400" y2="640"/>
+          <line x1="260" y1="560" x2="1340" y2="560"/>
+          <line x1="340" y1="460" x2="1260" y2="460"/>
+          <line x1="440" y1="340" x2="1160" y2="340"/>
+          <line x1="560" y1="200" x2="1040" y2="200"/>
+        </g>
+      </svg>
+      <div class="label" style="top: 80px; left: 40px;">▸ LANE DETECTOR · PROJECTED INTO SLAM FRAME</div>
+      <div class="label" style="top: 80px; right: 40px; color: var(--magenta); border-color: rgba(255,46,147,0.5); background: rgba(255,46,147,0.08);">▸ WAYPOINTS · LANE CENTER</div>
+      <div class="label" style="bottom: 80px; left: 40px; color: var(--amber); border-color: rgba(255,180,84,0.5); background: rgba(255,180,84,0.08);">▸ OBJECT DETECTION · YOLO</div>
+      <div class="label" style="bottom: 80px; right: 40px;">FPS 32.4 · POSE ±0.11m · IoU 0.83</div>
+    </div>
+  </section>
+
+  <!-- 05: PhD SLAM ─────────────────────────────────────────────── -->
+  <section class="slide s-phd" data-label="PhD">
+    <div class="chrome">
+      <div class="grid-bg"></div>
+      <div class="corner tl"></div><div class="corner tr"></div>
+      <div class="corner bl"></div><div class="corner br"></div>
+      <div class="rail">
+        <div><span class="dot"></span>05 / PhD · AUT · 2019 — 2023</div>
+        <div class="right"><span>VISION-DRIVEN SEMANTIC SLAM</span><span>//</span><span>AUCKLAND</span></div>
+      </div>
+      <div class="footrail"><div>DOCTORAL RESEARCH</div><div>05/10</div></div>
+    </div>
+
+    <div class="phd-left">
+      <div class="kicker" style="margin-bottom:28px;">DOCTORATE</div>
+      <h2 class="h2">Robust localisation<br>in <em>dynamic scenes.</em></h2>
+      <p class="lede" style="margin-top: 40px;">
+        Vision-driven Semantic SLAM for scene understanding and autonomous systems —
+        mapping that survives <span style="color:var(--cyan)">motion, occlusion and scale change</span>.
+      </p>
+      <div class="bar"></div>
+      <div class="readout" style="flex-wrap:wrap; gap:40px 48px;">
+        <div><span class="k">DEGREE · </span><span class="v">Doctor of Philosophy</span></div>
+        <div><span class="k">INSTITUTION · </span><span class="v">Auckland University of Technology</span></div>
+        <div><span class="k">THESIS · </span><span class="v">Semantic SLAM + Perception</span></div>
+        <div><span class="k">PRIOR · </span><span class="v">NPU, China · Robust control</span></div>
+      </div>
+    </div>
+
+    <div class="phd-map">
+      <svg viewBox="0 0 600 600">
+        <defs>
+          <radialGradient id="vignette" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#00E5FF" stop-opacity="0.15"/>
+            <stop offset="1" stop-color="#00E5FF" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="600" height="600" fill="url(#vignette)"/>
+        <!-- grid -->
+        <g stroke="rgba(120,180,220,0.08)" stroke-width="1">
+          <g>
+            <line x1="0" y1="50" x2="600" y2="50"/><line x1="0" y1="100" x2="600" y2="100"/>
+            <line x1="0" y1="150" x2="600" y2="150"/><line x1="0" y1="200" x2="600" y2="200"/>
+            <line x1="0" y1="250" x2="600" y2="250"/><line x1="0" y1="300" x2="600" y2="300"/>
+            <line x1="0" y1="350" x2="600" y2="350"/><line x1="0" y1="400" x2="600" y2="400"/>
+            <line x1="0" y1="450" x2="600" y2="450"/><line x1="0" y1="500" x2="600" y2="500"/>
+            <line x1="0" y1="550" x2="600" y2="550"/>
+          </g>
+          <g>
+            <line x1="50" y1="0" x2="50" y2="600"/><line x1="100" y1="0" x2="100" y2="600"/>
+            <line x1="150" y1="0" x2="150" y2="600"/><line x1="200" y1="0" x2="200" y2="600"/>
+            <line x1="250" y1="0" x2="250" y2="600"/><line x1="300" y1="0" x2="300" y2="600"/>
+            <line x1="350" y1="0" x2="350" y2="600"/><line x1="400" y1="0" x2="400" y2="600"/>
+            <line x1="450" y1="0" x2="450" y2="600"/><line x1="500" y1="0" x2="500" y2="600"/>
+            <line x1="550" y1="0" x2="550" y2="600"/>
+          </g>
+        </g>
+        <!-- SLAM trajectory -->
+        <path d="M 80 520 C 180 500, 220 380, 300 320 S 460 220, 520 100"
+              fill="none" stroke="#00E5FF" stroke-width="2.5"/>
+        <!-- keyframes -->
+        <g fill="#00E5FF">
+          <circle cx="80" cy="520" r="5"/>
+          <circle cx="180" cy="470" r="4"/>
+          <circle cx="240" cy="400" r="4"/>
+          <circle cx="300" cy="320" r="6"/>
+          <circle cx="400" cy="260" r="4"/>
+          <circle cx="460" cy="200" r="4"/>
+          <circle cx="520" cy="100" r="6"/>
+        </g>
+        <!-- map points -->
+        <g fill="rgba(255,180,84,0.8)">
+          <circle cx="120" cy="420" r="2"/><circle cx="150" cy="380" r="2"/>
+          <circle cx="200" cy="330" r="2"/><circle cx="260" cy="280" r="2"/>
+          <circle cx="340" cy="240" r="2"/><circle cx="420" cy="180" r="2"/>
+          <circle cx="480" cy="140" r="2"/><circle cx="160" cy="250" r="2"/>
+          <circle cx="220" cy="210" r="2"/><circle cx="380" cy="140" r="2"/>
+          <circle cx="500" cy="440" r="2"/><circle cx="440" cy="480" r="2"/>
+          <circle cx="380" cy="520" r="2"/><circle cx="100" cy="180" r="2"/>
+          <circle cx="180" cy="140" r="2"/><circle cx="100" cy="320" r="2"/>
+        </g>
+        <!-- semantic blobs -->
+        <g>
+          <ellipse cx="150" cy="400" rx="60" ry="24" fill="rgba(255,46,147,0.12)" stroke="rgba(255,46,147,0.5)" stroke-width="1"/>
+          <ellipse cx="420" cy="220" rx="80" ry="32" fill="rgba(125,255,168,0.1)" stroke="rgba(125,255,168,0.45)" stroke-width="1"/>
+        </g>
+        <!-- labels -->
+        <text x="94" y="540" font-family="JetBrains Mono" font-size="10" fill="#00E5FF" letter-spacing="1">KF_00</text>
+        <text x="510" y="92" font-family="JetBrains Mono" font-size="10" fill="#00E5FF" letter-spacing="1">KF_N · LOOP CLOSED</text>
+        <text x="170" y="434" font-family="JetBrains Mono" font-size="9" fill="#FF2E93">dyn · person</text>
+        <text x="440" y="250" font-family="JetBrains Mono" font-size="9" fill="#7DFFA8">static · road</text>
+        <!-- crosshair -->
+        <g stroke="rgba(0,229,255,0.4)" stroke-width="1">
+          <line x1="300" y1="0" x2="300" y2="600"/>
+          <line x1="0" y1="300" x2="600" y2="300"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 06: PAPERS ─────────────────────────────────────────────────── -->
+  <section class="slide s-papers" data-label="Papers">
+    <div class="chrome">
+      <div class="grid-bg"></div>
+      <div class="corner tl"></div><div class="corner tr"></div>
+      <div class="corner bl"></div><div class="corner br"></div>
+      <div class="rail">
+        <div><span class="dot"></span>06 / RECENT RESEARCH</div>
+        <div class="right"><span>VLM · PRIVACY · DISTILLATION</span><span>//</span><span>2024 — 2026</span></div>
+      </div>
+      <div class="footrail"><div>SELECTED PUBLICATIONS</div><div>06/10</div></div>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+      <div>
+        <div class="kicker" style="margin-bottom: 28px;">RESEARCH</div>
+        <h2 class="h2">Privacy-aligned vision,<br>under <em>real constraints.</em></h2>
+      </div>
+      <div class="readout">
+        <div><span class="k">REVIEWER · </span><span class="v">AAAI · VLDB · IEEE TCSVT · TETCI · Access</span></div>
+      </div>
+    </div>
+
+    <div class="papers-grid">
+      <div class="paper hl">
+        <div class="yr">2026 · ARXIV</div>
+        <div class="tt"><em>Bodhi VLM:</em> Privacy-Alignment Modeling for Hierarchical Visual Representations in VLM Encoders</div>
+        <div class="ven">Bottom-up + top-down feature search</div>
+      </div>
+      <div class="paper hl">
+        <div class="yr">2026 · ARXIV</div>
+        <div class="tt">CT-to-X-ray Distillation <em>Under Tiny Paired Cohorts</em></div>
+        <div class="ven">Evidence-bounded reproducible pilot</div>
+      </div>
+      <div class="paper">
+        <div class="yr">2026 · ARXIV</div>
+        <div class="tt">PPEDCRF — Privacy-Preserving Enhanced Dynamic CRF for Video Sequences</div>
+        <div class="ven">Minimal detection degradation</div>
+      </div>
+      <div class="paper">
+        <div class="yr">2026 · ARXIV</div>
+        <div class="tt">TSDCRF — Balancing Privacy &amp; Multi-Object Tracking via Time-Series CRF</div>
+        <div class="ven">Normalized control penalty</div>
+      </div>
+      <div class="paper">
+        <div class="yr">2026 · ARXIV</div>
+        <div class="tt">REAEDP — Entropy-Calibrated Differentially Private Data Release</div>
+        <div class="ven">Formal guarantees + attack-based eval</div>
+      </div>
+      <div class="paper">
+        <div class="yr">2024 · MTAP</div>
+        <div class="tt">Privacy-preserving word-embedding text classification via DBN-constructed privacy boundary</div>
+        <div class="ven">Multimedia Tools and Applications, 83(10)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07: TECH STACK ─────────────────────────────────────────────── -->
+  <section class="slide s-stack" data-label="Stack">
+    <div class="chrome">
+      <div class="grid-bg"></div>
+      <div class="corner tl"></div><div class="corner tr"></div>
+      <div class="corner bl"></div><div class="corner br"></div>
+      <div class="rail">
+        <div><span class="dot"></span>07 / TECHNICAL RANGE</div>
+        <div class="right"><span>FULL STACK · SILICON TO CLOUD</span><span>//</span></div>
+      </div>
+      <div class="footrail"><div>YEARS OF HANDS-ON, NOT BUZZWORDS</div><div>07/10</div></div>
+    </div>
+
+    <div>
+      <div class="kicker" style="margin-bottom: 28px;">RANGE</div>
+      <h2 class="h2">From silicon<br>to <em>cloud orchestration.</em></h2>
+    </div>
+
+    <div class="stack-grid">
+      <div class="stack-col">
+        <div class="hd">VLA · Multimodal</div>
+        <ul>
+          <li>VLA pipelines</li>
+          <li>VLM encoders</li>
+          <li>Multimodal LLM deploy</li>
+          <li>Embodied AI</li>
+          <li>Perception→action</li>
+        </ul>
+      </div>
+      <div class="stack-col">
+        <div class="hd">Perception · Vision</div>
+        <ul>
+          <li>YOLO / SSD<span class="y">8y</span></li>
+          <li>CLIP</li>
+          <li>DeepSORT</li>
+          <li>vSLAM <span class="y">6y</span></li>
+          <li>Sensor fusion</li>
+        </ul>
+      </div>
+      <div class="stack-col">
+        <div class="hd">Edge · Systems</div>
+        <ul>
+          <li>ONNX / TensorRT</li>
+          <li>Quantization · Distillation</li>
+          <li>Ambarella CV25 / CV72</li>
+          <li>Oclea SDK</li>
+          <li>Yocto Linux</li>
+        </ul>
+      </div>
+      <div class="stack-col">
+        <div class="hd">Languages · Cloud</div>
+        <ul>
+          <li>Python<span class="y">10y</span></li>
+          <li>C / C++<span class="y">8y</span></li>
+          <li>C# / .NET<span class="y">3y</span></li>
+          <li>AWS · Azure · GCP</li>
+          <li>Docker · CI/CD</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08: PATENTS & SERVICE ─────────────────────────────────────── -->
+  <section class="slide s-ps" data-label="Patents">
+    <div class="chrome">
+      <div class="grid-bg"></div>
+      <div class="corner tl"></div><div class="corner tr"></div>
+      <div class="corner bl"></div><div class="corner br"></div>
+      <div class="rail">
+        <div><span class="dot"></span>08 / PATENTS &amp; SERVICE</div>
+        <div class="right"><span>IP · PEER REVIEW</span><span>//</span></div>
+      </div>
+      <div class="footrail"><div>RECOGNISED CONTRIBUTIONS</div><div>08/10</div></div>
+    </div>
+
+    <div class="ps-col">
+      <div class="kicker" style="margin-bottom:24px;">PATENTS · CN</div>
+      <h2 class="h2" style="font-size: 56px;">Three patents<br>granted.</h2>
+      <ul class="ps-list" style="margin-top:40px;">
+        <li><span class="idx">PAT · 01</span><span>Telecom fraud prevention via voice-based semantic content analysis.</span></li>
+        <li><span class="idx">PAT · 02</span><span>Access safety detection &amp; isolation for virtualized users.</span></li>
+        <li><span class="idx">PAT · 03</span><span>Multichannel network intrusion detection &amp; defence.</span></li>
+        <li style="border-color: rgba(0,229,255,0.4); background: rgba(0,229,255,0.04);"><span class="idx" style="color:var(--cyan);">SW · ×3</span><span>Three software copyrights granted by the Copyright Protection Center of China.</span></li>
+      </ul>
+    </div>
+
+    <div class="ps-col">
+      <div class="kicker" style="margin-bottom:24px;">ACADEMIC SERVICE</div>
+      <h2 class="h2" style="font-size: 56px;">Reviewer for<br>top venues.</h2>
+      <ul class="ps-list" style="margin-top:40px;">
+        <li><span class="idx">▸ AAAI</span><span>Association for the Advancement of Artificial Intelligence</span></li>
+        <li><span class="idx">▸ VLDB</span><span>Very Large Data Bases</span></li>
+        <li><span class="idx">▸ IEEE</span><span>TCSVT · TETCI · Systems Journal · Access</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 09: WHAT I'M LOOKING FOR ───────────────────────────────────── -->
+  <section class="slide s-seek" data-label="Seeking">
+    <div class="chrome">
+      <div class="grid-bg"></div>
+      <div class="corner tl"></div><div class="corner tr"></div>
+      <div class="corner bl"></div><div class="corner br"></div>
+      <div class="rail">
+        <div><span class="dot pulse"></span>09 / WHAT I'M LOOKING FOR</div>
+        <div class="right"><span>NEXT ROLE</span><span>//</span><span>AUCKLAND · REMOTE · RELOCATION</span></div>
+      </div>
+      <div class="footrail"><div>ROLE PROFILE · SIGNAL OUT</div><div>09/10</div></div>
+    </div>
+
+    <div class="seek-head">
+      <div class="kicker" style="margin-bottom:28px;">NEXT</div>
+      <h2 class="h2">Embodied AI teams shipping<br><em>real systems,</em> not demos.</h2>
+    </div>
+
+    <div class="seek-card-row">
+      <div class="seek-card">
+        <div class="ic">▸ 01 · PROBLEM</div>
+        <div class="t">VLA &amp; <em>embodied</em> perception</div>
+        <div class="d">Robotics, XR, wearables, automotive — anywhere a model must perceive, reason and act on real hardware.</div>
+      </div>
+      <div class="seek-card">
+        <div class="ic">▸ 02 · SURFACE</div>
+        <div class="t">On-device &amp; <em>edge-first</em></div>
+        <div class="d">Compute-bound environments where quantization, distillation and systems thinking decide whether a model ships.</div>
+      </div>
+      <div class="seek-card">
+        <div class="ic">▸ 03 · TEAM</div>
+        <div class="t">Principal / <em>tech lead</em> IC</div>
+        <div class="d">Small, senior, product-aligned. Comfortable owning a pipeline end-to-end — research → SDK → silicon.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10: CONTACT ────────────────────────────────────────────────── -->
+  <section class="slide s-contact" data-label="Contact">
+    <div class="chrome">
+      <div class="grid-bg"></div>
+      <div class="corner tl"></div><div class="corner tr"></div>
+      <div class="corner bl"></div><div class="corner br"></div>
+      <div class="rail">
+        <div><span class="dot pulse"></span>10 / CONTACT — END OF DECK</div>
+        <div class="right"><span>BOB MA · AUCKLAND</span><span>//</span><span>THANK YOU</span></div>
+      </div>
+      <div class="footrail"><div>SIGNAL ACQUIRED · AWAITING RESPONSE</div><div>10/10</div></div>
+    </div>
+
+    <div>
+      <div class="kicker" style="margin-bottom:28px;">LET'S TALK</div>
+      <h2 class="h2" style="font-size: 88px; max-width:900px;">If this<br>sounds like <em>you</em>.</h2>
+
+      <ul class="contact-list">
+        <li><span class="k">▸ EMAIL</span><span class="v">amabo1215@gmail.com</span></li>
+        <li><span class="k">▸ PHONE</span><span class="v">+64 21 110 8064</span></li>
+        <li><span class="k">▸ BASED</span><span class="v">Auckland, New Zealand · Permanent Resident</span></li>
+        <li><span class="k">▸ STATUS</span><span class="v" style="color:var(--cyan)">Open to principal / tech-lead roles · VLA / embodied AI</span></li>
+      </ul>
+    </div>
+
+    <div class="sign-off">
+      <svg viewBox="0 0 600 600">
+        <defs>
+          <radialGradient id="scope" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#00E5FF" stop-opacity="0.25"/>
+            <stop offset="1" stop-color="#00E5FF" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="300" cy="300" r="260" fill="none" stroke="rgba(0,229,255,0.2)"/>
+        <circle cx="300" cy="300" r="200" fill="none" stroke="rgba(0,229,255,0.15)"/>
+        <circle cx="300" cy="300" r="140" fill="none" stroke="rgba(0,229,255,0.12)"/>
+        <line x1="40" y1="300" x2="560" y2="300" stroke="rgba(0,229,255,0.18)"/>
+        <line x1="300" y1="40" x2="300" y2="560" stroke="rgba(0,229,255,0.18)"/>
+        <!-- tick marks -->
+        <g stroke="rgba(0,229,255,0.5)" stroke-width="2">
+          <line x1="300" y1="30" x2="300" y2="50"/>
+          <line x1="300" y1="550" x2="300" y2="570"/>
+          <line x1="30" y1="300" x2="50" y2="300"/>
+          <line x1="550" y1="300" x2="570" y2="300"/>
+        </g>
+      </svg>
+      <div class="center-mark">
+        <div class="bm">BM</div>
+      </div>
+    </div>
+  </section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+</body>
+</html>
