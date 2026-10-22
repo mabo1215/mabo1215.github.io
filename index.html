@@ -54,12 +54,14 @@
         <ul>
           <li>Designed and optimised multimodal LLM inference (LLaMA3, GPT, CLIP) and integrated model outputs with backend decision systems through REST APIs and edge–cloud pipelines on Azure.</li>
           <li>Owned the end-to-end model pipeline, from PyTorch training and optimisation through ONNX export and conversion to production deployment.</li>
+          <li>Led low-level optimisation of transformer-backbone inference on edge devices: quantisation-aware deployment, mixed-precision execution, memory-access optimisation and hardware-aligned scheduling, within strict latency, memory and power budgets.</li>
+          <li>Optimised critical kernels and adapted model operators for target chips (Ambarella CV25 / CV72 class) and their embedded inference runtimes.</li>
           <li>For small and medium-sized business (SMB) customers, built front-of-store information pipelines combining shopfront and signage photos, shelf and price-tag images, in-store camera video and store operating data (POS, inventory, pricing).</li>
           <li>Applied vision–language models (VLMs) to business assessments: merchant verification and qualification, operating-status and risk assessment, shelf-display compliance, and security-event analysis with alert summaries.</li>
           <li>Connected assessment results to POS and payment systems, alerting, ticketing and mobile apps; per-customer rules, categories and VLM prompt templates met each SMB customer's custom requirements.</li>
-          <li>Built unit, stress and automated CI/CD test pipelines for production reliability; Yocto cross-compilation and chip-SDK integration.</li>
+          <li>Built preprocessing, postprocessing, validation and automated CI/CD test pipelines (unit and stress) for production reliability.</li>
         </ul>
-        <div class="stack"><b>Stack:</b> Python · C++ · PyTorch · ONNX · VLMs · Multimodal LLMs · CLIP · REST APIs · POS / payment integration · <b>ML DevOps:</b> CI/CD pipelines · Automated testing &amp; validation · Model pipeline automation · Docker · Git · Azure edge–cloud pipelines · Yocto builds</div>
+        <div class="stack"><b>Stack:</b> Python · C++ · PyTorch · ONNX · VLMs · Multimodal LLMs · CLIP · REST APIs · POS / payment integration · <b>ML DevOps:</b> CI/CD pipelines · Automated testing &amp; validation · Model pipeline automation · Docker · Git · Azure</div>
       </div>
       <div class="job">
         <div class="hdr"><div class="ttl">Senior Machine Learning Engineer</div><div class="per">Mar 2022 — Mar 2024</div></div>
@@ -70,7 +72,6 @@
           <li>Built Spark processing with Airflow orchestration for fleet itinerary management.</li>
           <li>Used Concourse CI/CD to automate infrastructure provisioning and model deployment, keeping environments reproducible across development, testing and production.</li>
           <li>Processed SMB fleet customers' driving data together with NZTA vehicle-inspection data for vehicle-status and driving-behaviour models.</li>
-          <li>Modelled vehicle operational status and driving behaviour from real-time sensor data (LSTM, KNN, k-means); queried Snowflake with SQL for analytics and training data.</li>
           <li>Shipped real-time perception (YOLO/SSD detection, tracking, road segmentation) and collision-warning modules across large commercial vehicle fleets.</li>
         </ul>
         <div class="stack"><b>Stack:</b> Python · C++ · PyTorch · AWS (SageMaker, Lambda, Glue, S3) · PySpark · Airflow · Snowflake · Concourse · Docker · CI/CD</div>
@@ -116,7 +117,7 @@
   <section>
     <div class="sec-ttl"><div class="n">§ 04</div><h2>Technical Skills</h2></div>
     <div class="body skill">
-      <div><div class="k">MLOps &amp; CI/CD</div><div class="v">Concourse · CI/CD pipelines · Automated testing &amp; validation · Docker · Kubernetes · Git · Yocto builds</div></div>
+      <div><div class="k">MLOps &amp; CI/CD</div><div class="v">Concourse · CI/CD pipelines · Automated testing &amp; validation · Docker · Kubernetes · Git</div></div>
       <div><div class="k">Data &amp; pipelines</div><div class="v">Airflow · PySpark · AWS Glue · ETL · Snowflake · SQL · DynamoDB · Data warehousing</div></div>
       <div><div class="k">Cloud</div><div class="v">AWS (SageMaker, Lambda, Glue, S3, EC2) · Azure · GCP (Cloud Storage, Kubernetes)</div></div>
       <div><div class="k">ML &amp; GenAI</div><div class="v">PyTorch · TensorFlow / Keras · ONNX · Forecasting · LSTM · LLMs (LLaMA3, GPT) · VLMs · CLIP · Quantisation · Distillation · Computer vision</div></div>
@@ -129,8 +130,6 @@
     <div class="body pubs">
       <div class="pub hl"><span class="yr">2026 · In preparation · PoPETs</span>BodhiPromptShield: Pre-Inference Prompt Mediation for Suppressing Surface-Form Privacy Propagation in LLM Agent Pipelines. <span class="src">github.com/mabo1215/BodhiPromptShield</span></div>
       <div class="pub hl"><span class="yr">2026 · Under review · ACM TACO</span>Shape Sets the Chunk: Selecting and Keying the Chunk of Chunked Linear-Recurrence GPU Kernels. <span class="src">github.com/mabo1215/COREY_Transformer</span></div>
-      <div class="pub"><span class="yr">2026 · Under review · IEEE SPL</span>When to Pay Separately for the Entropy of a Differentially Private Histogram. <span class="src">arXiv:2603.13709</span></div>
-      <div class="pub"><span class="yr">2026 · Under review · Discover AI</span>JDCNet: Confidence-Gated Privileged-Modality Distillation for Cost-Preserving X-ray Inference.</div>
       <div class="pub"><span class="yr">2024 · Multimedia Tools and Applications</span>A privacy-preserving word embedding text classification model based on privacy boundary constructed by a deep belief network. 83(10): 30181–30206.</div>
       <div class="pub"><span class="yr">2021 · IEEE GLOBECOM</span>PPDTSA: Privacy-preserving deep transformation self-attention framework for object detection.</div>
     </div>
