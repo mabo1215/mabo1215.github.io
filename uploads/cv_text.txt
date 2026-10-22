@@ -183,7 +183,7 @@ PROFESSIONAL EXPERIENCE
 
 
 
-Senior II Machine Learning Engineer | Resideo Inc. (Honeywell Home), NYSE: REZI    Mar 2024 - Present
+Senior II Machine Learning Engineer | Resideo Inc. (Honeywell Home), NYSE: REZI    Mar 2024 - Oct 2026
 
 
 
@@ -223,6 +223,18 @@ Key project: Vision understanding and multimodal large-model inference on edge S
 
 
 
+• For small and medium-sized business (SMB) customers, built front-of-store information pipelines combining shopfront and signage photos, shelf and price-tag images, in-store camera video and store operating data (POS, inventory, pricing).
+
+
+
+• Applied vision-language models (VLMs) to business assessments: merchant verification and qualification, operating-status and risk assessment, shelf-display compliance, and security-event analysis with alert summaries.
+
+
+
+• Connected assessment results to POS and payment systems, alerting, ticketing and mobile apps; per-customer rules, categories and VLM prompt templates met each SMB customer's custom requirements.
+
+
+
 • Wrote extensive unit tests, stress tests, and deployed automated CI/CD testing pipelines to ensure reliability and performance on embedded devices. 
 
 
@@ -256,6 +268,9 @@ Key Project: ADAS perception, lane-level navigation, and multi-sensor vehicle in
 • Built scalable AWS-based data infrastructure for processing large-scale fleet sensor and video datasets using SageMaker and containerized workflows.
 • Optimized inference pipelines for edge-device deployment using C++, PyTorch, and Android-based environments.
 • Designed scalable ETL pipelines supporting continuous model training, evaluation, and deployment across distributed systems.
+• Developed and maintained production ETL pipelines on SageMaker, Lambda, Glue, S3, Snowflake and Docker; built Spark processing with Airflow orchestration for fleet itinerary management.
+• Used Concourse CI/CD to automate infrastructure provisioning and model deployment across development, testing and production.
+• Processed SMB fleet customers' driving data together with NZTA vehicle-inspection data for vehicle-status and driving-behaviour models.
 • Implemented automated testing, validation, and CI/CD pipelines to ensure production-grade reliability of perception modules.
 
 
@@ -282,6 +297,10 @@ Key project: Machine learning model for grocery detection
 
 
 • Supported AWS S3/EC2 integration and warehouse data processing through DynamoDB and Python services.
+
+
+
+• Processed front-of-store data for retail and SMB clients (shelf and price-tag images, inventory, pricing, shelf life) for sales forecasting, and integrated the results with StayinFront's own ERP and clients' ERP systems.
 
 
 
@@ -552,7 +571,7 @@ ACADEMIC SERVICE AND ACHIEVEMENTS
 
 
 
-• Reviewer for AAAI, VLDB, IEEE Systems Journal, IEEE TCSVT, IEEE TETCI, IEEE Access.
+• Reviewer for AAAI, ACM TOMM, IEEE Systems Journal, IEEE TCSVT, IEEE TETCI, IEEE Access.
 
 
 

@@ -114,7 +114,9 @@
 
   /* Experience */
   .exp{ padding-left: 23mm; }
-  .job{ margin-bottom: 4mm; page-break-inside: avoid; }
+  .job{ margin-bottom: 4mm; }
+  .job .hdr, .job .org, .job .key{ break-after: avoid; }
+  .job li, .job .stack{ break-inside: avoid; }
   .job .hdr{
     display:flex; justify-content: space-between; align-items: baseline;
     gap: 4mm; margin-bottom: 1mm;
@@ -141,6 +143,8 @@
 
   /* skill grid */
   .skill{ padding-left: 23mm; display:grid; grid-template-columns: repeat(2, 1fr); gap: 2mm 10mm; }
+  .skill > div{ break-inside: avoid; }
+  .sec-ttl{ break-after: avoid; }
   .skill .k{ font-family: var(--mono); font-size: 7.5pt; color: var(--cyan); letter-spacing: 0.1em; text-transform: uppercase; }
   .skill .v{ font-size: 8.8pt; color: var(--ink-2); margin-bottom: 2mm; }
 
@@ -202,8 +206,8 @@
   <div class="corner c-bl"></div><div class="corner c-br"></div>
 
   <div class="topbar">
-    <div>BOB MA · CURRICULUM VITAE · <span class="d">v2026.04</span></div>
-    <div>AUCKLAND · NZ · OPEN TO ROLES</div>
+    <div>BOB MA · CURRICULUM VITAE · <span class="d">v2026.10</span></div>
+    <div>AUCKLAND · NZ · AVAILABLE NOW</div>
   </div>
 
   <!-- HEADER -->
@@ -227,7 +231,8 @@
       Senior Vision–Language–Action (VLA) and Multimodal AI engineer with deep experience in real-time perception,
       multimodal reasoning and <em>embodied system deployment</em> on edge devices. Proven track record designing
       VLA pipelines, optimising VLMs and multimodal LLMs for real-time edge inference, and integrating perception
-      with downstream action/control — from Ambarella SoCs to large-scale commercial vehicle fleets.
+      with downstream action/control — from Ambarella SoCs to large-scale commercial vehicle fleets — plus VLM-based
+      business assessment for small and medium-sized business (SMB) customers.
     </p>
   </section>
 
@@ -239,19 +244,20 @@
       <div class="job">
         <div class="hdr">
           <div class="ttl">Senior II Machine Learning Engineer</div>
-          <div class="per">Mar 2024 — Present</div>
+          <div class="per">Mar 2024 — Oct 2026</div>
         </div>
         <div class="org">Resideo Inc. (Honeywell Home) · <span class="tk">NYSE:REZI</span></div>
-        <div class="key">▸ Vision understanding &amp; multimodal large-model inference on edge SoCs</div>
+        <div class="key">▸ Multimodal LLM / VLM inference on edge SoCs · VLM solutions for SMB customers</div>
         <ul>
           <li>Designed and optimised multimodal LLM inference (LLaMA3, GPT, YOLO, CLIP) on edge SoCs for real-time video understanding and mobile deployment.</li>
           <li>Rewrote backbone operators for Clavary (.cvimodel) conversion and hardware-accelerated inference on Ambarella CV25 / CV72.</li>
           <li>Model compression, quantisation and knowledge distillation — SOTA inference under strict compute/memory constraints.</li>
           <li>Contributed a general image/video understanding framework to the Oclea SDK; integrated pipelines with multimodal LLM capabilities.</li>
           <li>End-to-end ML (train → ONNX → Clavary → on-chip → real-time → post-processing); perception-to-action triggering tracking, sensor and motor actuation.</li>
+          <li>For SMB customers: front-of-store information (shopfront photos, shelf / price-tag images, store video, POS and inventory data) fed VLM business assessments (merchant verification, operating status and risk, shelf compliance, security events), connected to POS / payment, alerting and apps with per-customer rules and prompt templates.</li>
           <li>Yocto-based embedded builds, cross-compilation, CI/CD for embedded reliability.</li>
         </ul>
-        <div class="stack"><b>Stack:</b> Multimodal LLMs · C++ · Python · Ambarella CV25/CV72 · Oclea · Yocto · Azure · YOLO · ONNX · PyTorch · CI/CD</div>
+        <div class="stack"><b>Stack:</b> Multimodal LLMs · VLMs · C++ · Python · Ambarella CV25/CV72 · Oclea · Yocto · Azure · YOLO · ONNX · PyTorch · CI/CD</div>
       </div>
 
       <div class="job">
@@ -266,9 +272,10 @@
           <li>Lane-level navigation combining lane detection with vSLAM; lane-centre waypoint generation.</li>
           <li>Camera-to-SLAM extrinsic calibration — lane detections projected into global spatial coordinates.</li>
           <li>Multi-modal processing (video + GPS + telemetry); road condition + collision warning deployed on edge devices.</li>
-          <li>Scalable AWS infrastructure with SageMaker; ETL pipelines for continuous training and evaluation.</li>
+          <li>ETL for continuous training and evaluation on SageMaker, Lambda, Glue, S3, Snowflake and Docker; Spark + Airflow; Concourse CI/CD for infrastructure and model deployment.</li>
+          <li>SMB fleet customers' driving data and NZTA vehicle-inspection data for vehicle-status and driving-behaviour models.</li>
         </ul>
-        <div class="stack"><b>Stack:</b> C++ · Python · OpenCV · vSLAM · GPS Fusion · PyTorch · AWS SageMaker · Docker · Android</div>
+        <div class="stack"><b>Stack:</b> C++ · Python · OpenCV · vSLAM · GPS Fusion · PyTorch · AWS SageMaker · Glue · Airflow · Snowflake · Concourse · Docker · Android</div>
       </div>
 
       <div class="job">
@@ -281,6 +288,7 @@
         <ul>
           <li>CV framework for grocery analysis — stock forecasting, price-tag / SKU recognition from shelf &amp; packaging images.</li>
           <li>AWS S3/EC2 integration, DynamoDB warehouse workflows, Python/Flask services.</li>
+          <li>Retail / SMB front-of-store data for sales forecasting, integrated with StayinFront's own ERP and clients' ERP systems.</li>
         </ul>
         <div class="stack"><b>Stack:</b> Python · Keras · TensorFlow · PySpark · DynamoDB · Flask · AWS</div>
       </div>
@@ -428,12 +436,12 @@
       <div class="row"><div class="k">PAT · 02</div><div>Access safety detection &amp; isolation for virtualised users — CNIPA</div></div>
       <div class="row"><div class="k">PAT · 03</div><div>Multichannel network intrusion detection &amp; defence — CNIPA</div></div>
       <div class="row"><div class="k">SW · ×3</div><div>Three software copyrights granted by the Copyright Protection Center of China</div></div>
-      <div class="row"><div class="k">REVIEW</div><div>Reviewer — AAAI · VLDB · IEEE TCSVT · TETCI · Systems Journal · Access</div></div>
+      <div class="row"><div class="k">REVIEW</div><div>Reviewer — AAAI · ACM TOMM · IEEE TCSVT · TETCI · Systems Journal · Access</div></div>
     </div>
   </section>
 
   <div class="footline">
-    <div>BOB MA · CV · v2026.04</div>
+    <div>BOB MA · CV · v2026.10</div>
     <div><span class="c">SIGNAL</span> · AMABO1215@GMAIL.COM · +64 21 110 8064</div>
   </div>
 
