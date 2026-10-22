@@ -1,0 +1,179 @@
+/* Shared styles for the tailored CVs. Derived from ../../resume-print.html (copied from ../au-2026-10),
+   reworked to paginate cleanly across multiple A4 pages. */
+/* Static font files (Google Fonts, OFL) so PDFs embed TrueType outlines rather than Type 3 glyphs. */
+@font-face{ font-family:'Instrument Serif'; font-style:italic; font-weight:400; src:url('fonts/InstrumentSerif-400-italic.woff') format('woff'); }
+@font-face{ font-family:'Instrument Serif'; font-style:normal; font-weight:400; src:url('fonts/InstrumentSerif-400.woff') format('woff'); }
+@font-face{ font-family:'JetBrains Mono'; font-style:normal; font-weight:400; src:url('fonts/JetBrainsMono-400.woff') format('woff'); }
+@font-face{ font-family:'JetBrains Mono'; font-style:normal; font-weight:500; src:url('fonts/JetBrainsMono-500.woff') format('woff'); }
+@font-face{ font-family:'Space Grotesk'; font-style:normal; font-weight:400; src:url('fonts/SpaceGrotesk-400.woff') format('woff'); }
+@font-face{ font-family:'Space Grotesk'; font-style:normal; font-weight:500; src:url('fonts/SpaceGrotesk-500.woff') format('woff'); }
+@font-face{ font-family:'Space Grotesk'; font-style:normal; font-weight:600; src:url('fonts/SpaceGrotesk-600.woff') format('woff'); }
+
+:root{
+  --ink: #0A0E14;
+  --ink-2: #1F2833;
+  --ink-dim: #5A6472;
+  --ink-faint: #98A0AD;
+  --line: #D6DEE8;
+  --line-2: #B6C2D1;
+  --cyan: #007A99;
+  --paper: #FFFFFF;
+  --display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --serif: "Instrument Serif", "Times New Roman", serif;
+}
+*{ box-sizing: border-box; }
+html,body{ margin:0; padding:0; background:#E4E8EE; color:var(--ink); font-family:var(--display); font-size:10pt; line-height:1.4; }
+
+.sheet{
+  width: 210mm; min-height: 297mm;
+  background: var(--paper);
+  margin: 20px auto;
+  padding: 13mm 14mm 12mm;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+}
+
+.topbar{
+  display:flex; justify-content:space-between;
+  font-family: var(--mono); font-size: 7.5pt; color: var(--ink-faint);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  padding-bottom: 4mm; border-bottom: 1px solid var(--line);
+  margin-bottom: 5mm;
+}
+.topbar .d{ color: var(--cyan); font-weight: 500; }
+
+/* Header */
+.header{ padding-bottom: 4mm; border-bottom: 1px solid var(--line); }
+.header h1{ margin: 0 0 1mm; font-weight:600; font-size: 23pt; letter-spacing: -0.02em; line-height: 1; }
+.header .h1-zh{ font-family: var(--serif); font-style: italic; color: var(--cyan); font-weight:400; font-size: 17pt; }
+.header .titleline{ margin-top: 2mm; font-size: 10.5pt; color: var(--ink-2); font-weight: 500; }
+.header .titleline .c{ color: var(--cyan); }
+.header .meta{
+  margin-top: 3.5mm;
+  display: flex; gap: 2mm 6mm; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 7.8pt; color: var(--ink-2);
+}
+.header .meta .k{ color: var(--ink-faint); margin-right: 4px; letter-spacing: 0.1em; text-transform: uppercase; font-size: 6.8pt; }
+.header .meta a{ color: inherit; text-decoration: none; }
+
+/* Section */
+section{ margin-top: 4.5mm; }
+.sec-ttl{
+  display:grid; grid-template-columns: 20mm 1fr;
+  align-items: baseline; gap: 3mm;
+  padding-bottom: 1.2mm;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2.5mm;
+  break-after: avoid;
+}
+.sec-ttl .n{ font-family: var(--mono); font-size: 7pt; color: var(--cyan); letter-spacing: 0.2em; }
+.sec-ttl h2{ margin:0; font-weight: 600; font-size: 10.5pt; letter-spacing: -0.005em; text-transform: uppercase; }
+
+.body{ padding-left: 23mm; }
+.summary{ margin:0; font-size: 9.3pt; line-height: 1.5; color: var(--ink-2); }
+.summary em{ font-family: var(--serif); font-style: italic; color: var(--cyan); font-size: 10pt; }
+
+/* Fit highlights: requirement → evidence */
+.fit{ display:grid; grid-template-columns: 1fr 1fr; gap: 2mm 7mm; }
+.fit > div{ break-inside: avoid; }
+.fit .k{ font-family: var(--mono); font-size: 7.3pt; color: var(--cyan); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5mm; }
+.fit .v{ font-size: 8.7pt; color: var(--ink-2); line-height: 1.45; }
+
+/* Experience */
+.job{ margin-bottom: 3.5mm; }
+.job .hdr, .job .org, .job .key{ break-after: avoid; }
+.job li, .job .stack{ break-inside: avoid; }
+.job .hdr{ display:flex; justify-content: space-between; align-items: baseline; gap: 4mm; margin-bottom: 0.6mm; }
+.job .ttl{ font-size: 10.3pt; font-weight: 600; letter-spacing:-0.005em; }
+.job .per{ font-family: var(--mono); font-size: 7.8pt; color: var(--cyan); white-space:nowrap; letter-spacing: 0.06em; }
+.job .org{ font-family: var(--mono); font-size: 8.3pt; color: var(--ink-2); margin-bottom: 1.2mm; }
+.job .org .tk{ color: var(--cyan); }
+.job .key{ font-size: 8.8pt; color: var(--ink-2); font-style: italic; margin-bottom: 1.2mm; }
+.job ul{ list-style: none; padding: 0; margin: 0 0 1.2mm; }
+.job li{ font-size: 8.7pt; line-height: 1.45; color: var(--ink-2); padding-left: 10px; position: relative; margin-bottom: 0.7mm; }
+.job li::before{ content: "▸"; position: absolute; left: 0; top: 0; color: var(--cyan); font-size: 7pt; }
+.job .stack{ font-family: var(--mono); font-size: 7.3pt; color: var(--ink-dim); border-top: 1px dotted var(--line); padding-top: 1.2mm; }
+.job .stack b{ color: var(--cyan); font-weight: 500; }
+
+.early .row{ display:grid; grid-template-columns: 1fr auto; gap: 1mm 4mm; font-size: 8.6pt; color: var(--ink-2); margin-bottom: 1.2mm; break-inside: avoid; }
+.early .row b{ color: var(--ink); font-weight: 600; }
+.early .row .per{ font-family: var(--mono); font-size: 7.6pt; color: var(--cyan); white-space: nowrap; }
+.early .row .d{ grid-column: 1 / -1; color: var(--ink-dim); font-size: 8.4pt; }
+
+/* Skills */
+.skill{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 1.5mm 8mm; }
+.skill > div{ break-inside: avoid; }
+.skill .k{ font-family: var(--mono); font-size: 7.3pt; color: var(--cyan); letter-spacing: 0.1em; text-transform: uppercase; }
+.skill .v{ font-size: 8.6pt; color: var(--ink-2); margin-bottom: 1mm; }
+
+/* Education */
+.edu .row{ display:grid; grid-template-columns: 26mm 1fr; gap: 4mm; margin-bottom: 1.6mm; font-size: 8.7pt; break-inside:avoid; }
+.edu .row .per{ font-family: var(--mono); color: var(--cyan); font-size: 7.6pt; }
+.edu .row .deg{ font-weight: 600; font-size: 9.2pt; }
+.edu .row .sch{ font-family: var(--mono); font-size: 7.8pt; color: var(--ink-dim); margin-top: 0.3mm; }
+.edu .row .top{ font-size: 8.5pt; color: var(--ink-2); margin-top: 0.4mm; }
+.edu .row em{ font-family: var(--serif); font-style: italic; color: var(--cyan); font-size: 9.3pt; }
+
+/* Publications */
+.pubs{ display:grid; grid-template-columns: 1fr 1fr; gap: 2mm 6mm; }
+.pub{ font-size: 8.3pt; line-height: 1.4; color: var(--ink-2); padding-left: 3mm; border-left: 2px solid var(--line); break-inside: avoid; }
+.pub.hl{ border-left-color: var(--cyan); }
+.pub .yr{ font-family: var(--mono); font-size: 6.9pt; color: var(--cyan); letter-spacing: 0.1em; display:block; margin-bottom: 0.3mm; text-transform: uppercase; }
+.pub .src{ font-family: var(--mono); font-size: 7pt; color: var(--ink-dim); }
+
+/* Numbered publication list (postdoc CV) */
+.publist .grp{ font-family: var(--mono); font-size: 7.4pt; color: var(--cyan); letter-spacing: 0.04em; margin: 2.2mm 0 1mm; break-after: avoid; }
+.publist .grp:first-child{ margin-top: 0; }
+.publist ol{ margin: 0; padding-left: 6mm; }
+.publist li{ font-size: 8.3pt; line-height: 1.5; color: var(--ink-2); margin-bottom: 0.9mm; break-inside: avoid; }
+.publist li::marker{ font-family: var(--mono); font-size: 7.3pt; color: var(--ink-faint); }
+.publist .au{ display: inline-block; font-family: var(--mono); font-size: 6.8pt; color: var(--paper); background: var(--cyan); border-radius: 2px; padding: 0 3px; margin-right: 4px; line-height: 1.5; }
+.publist .ven{ font-weight: 600; color: var(--ink); }
+.publist .src{ font-family: var(--mono); font-size: 7pt; color: var(--ink-dim); }
+.publist .note{ margin: 0; font-size: 8.3pt; line-height: 1.5; color: var(--ink-2); }
+
+/* Patents / service */
+.pat{ font-size: 8.6pt; color: var(--ink-2); line-height: 1.5; }
+.pat .row{ display:grid; grid-template-columns: 16mm 1fr; gap: 3mm; margin-bottom: 0.8mm; break-inside: avoid; }
+.pat .row .k{ font-family: var(--mono); color: var(--cyan); font-size: 7.3pt; letter-spacing: 0.1em; }
+
+.footline{
+  margin-top: 5mm; padding-top: 2mm;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono); font-size: 7pt;
+  color: var(--ink-faint); letter-spacing: 0.18em; text-transform: uppercase;
+  display:flex; justify-content:space-between;
+}
+.footline .c{ color: var(--cyan); }
+
+/* Chinese CV (zh.html): Latin text keeps the same fonts, CJK falls back to Microsoft YaHei.
+   No italics or wide tracking on CJK, which has neither. */
+:root:lang(zh){
+  --display: "Space Grotesk", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+  --mono: "JetBrains Mono", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", monospace;
+}
+:lang(zh) .summary, :lang(zh) .job li, :lang(zh) .fit .v{ line-height: 1.6; }
+:lang(zh) .job .key{ font-style: normal; }
+:lang(zh) .summary em{ font-family: var(--display); font-style: normal; font-size: inherit; font-weight: 600; }
+:lang(zh) .sec-ttl h2{ letter-spacing: 0.08em; }
+:lang(zh) .fit .k, :lang(zh) .skill .k, :lang(zh) .pat .row .k, :lang(zh) .header .meta .k{ letter-spacing: 0.04em; }
+
+@media print{
+  @page{ size: A4; margin: 11mm 0 10mm; }
+  html,body{ background:#fff; }
+  .sheet{ margin:0; box-shadow:none; width:210mm; min-height:auto; padding: 0 14mm; }
+}
+
+/* Website copy (publish_site.sh): download button, and a single-column layout on phones. Screen only, so the PDFs are unchanged. */
+.dl{ position: fixed; right: 16px; bottom: 16px; z-index: 10; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+     background: var(--cyan); color: #fff; text-decoration: none; padding: 10px 14px; border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+@media print{ .dl{ display: none; } }
+@media screen and (max-width: 840px){
+  .sheet{ width: auto; min-height: 0; margin: 0; padding: 20px 16px 64px; box-shadow: none; }
+  .topbar, .footline{ flex-direction: column; gap: 4px; }
+  .sec-ttl{ grid-template-columns: auto 1fr; }
+  .body{ padding-left: 0; }
+  .fit, .skill, .pubs{ grid-template-columns: 1fr; }
+  .job .hdr{ flex-wrap: wrap; gap: 0 4mm; }
+  .edu .row, .pat .row, .early .row{ grid-template-columns: 1fr; gap: 0.5mm; }
+}
