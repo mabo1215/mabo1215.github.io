@@ -440,7 +440,7 @@ Doctor of Philosophy (PhD) - Auckland University of Technology, New Zealand    J
 
 
 
-Research topic: Vision-driven Semantic SLAM for Scene Understanding and Autonomous Systems, focusing on visual perception, semantic mapping, and robust localization in dynamic environments. 
+Thesis: Computational Methods in Machine Learning for Privacy Preservation, covering privacy-preserving object detection, text classification and noise-generation mechanisms. 
 
 
 
