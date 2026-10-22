@@ -30,18 +30,18 @@
   <section>
     <div class="sec-ttl"><div class="n">§ 01</div><h2>Summary</h2></div>
     <div class="body">
-      <p class="summary">Auckland-based machine learning engineer with a PhD from AUT (machine learning for privacy preservation), an MSc in computer software and theory, 6+ years shipping production ML and 18+ years in software and data engineering. Specialises in the <em>data pipelines and automation</em> behind production ML: ETL on AWS (SageMaker, Lambda, Glue, S3) and Snowflake, Spark with Airflow, automated training, evaluation and deployment, and CI/CD (GitHub Actions, Concourse) that ships models behind automated validation, with MLflow tracking and Azure ML endpoints. At Resideo, built VLM-based business assessment for small and medium-sized business (SMB) customers, from front-of-store data through to POS, payment and alerting systems. Delivered across smart-home (Resideo / Honeywell Home), transport (EROAD), retail (Woolworths NZ, StayinFront) and construction (BuildingEstimates); three patents; reviewer for AAAI, ACM TOMM and IEEE journals.</p>
+      <p class="summary">Machine learning engineer in Auckland with 6+ years in production ML and 18+ years in software and data engineering. Holds a PhD from AUT (machine learning for privacy preservation) and an MSc in computer software and theory. Specialises in the <em>data pipelines and automation</em> that keep models running in production: ETL on AWS and Snowflake, Spark with Airflow, CI/CD with GitHub Actions and Concourse, MLflow tracking and Azure ML endpoints. Most recently, at Resideo, built VLM-based business assessment for small and medium-sized business (SMB) customers, from store data through to POS, payment and alerting systems. Experience spans smart-home, transport, retail and construction. Inventor on three patents and reviewer for AAAI, ACM TOMM and IEEE journals.</p>
     </div>
   </section>
   <section>
     <div class="sec-ttl"><div class="n">§ 02</div><h2>Core Skills / Strengths</h2></div>
     <div class="body fit">
-      <div><div class="k">ML pipelines &amp; MLOps</div><div class="v">ETL feeding continuous training, evaluation and deployment; GitHub Actions and Concourse CI/CD; MLflow tracking; Azure ML endpoints; automated validation as a release gate.</div></div>
-      <div><div class="k">Data platforms</div><div class="v">AWS SageMaker, Lambda, Glue and S3; Spark with Airflow; Snowflake and SQL; vector databases; SAP / ERP integration.</div></div>
-      <div><div class="k">Production engineering &amp; DevOps</div><div class="v">Python and C++ services (Flask, REST); Docker and Kubernetes; unit, stress and CI/CD testing; Git; Agile / Scrum.</div></div>
-      <div><div class="k">SMB business flows</div><div class="v">Front-of-store data (shopfront photos, shelf and price-tag images, camera video, POS and inventory) connected to POS, payment, alerting, ticketing and apps; company and client ERP integration.</div></div>
-      <div><div class="k">VLMs, LLMs &amp; agents</div><div class="v">VLM business assessments (merchant verification, operating status and risk, shelf compliance, security events) configured per customer; multimodal LLMs via REST APIs; Claude Agent SDK for code review and data processing.</div></div>
-      <div><div class="k">Forecasting &amp; applied ML</div><div class="v">Demand, price and sales forecasting; behaviour modelling (LSTM, k-means); compression, quantisation and distillation.</div></div>
+      <div><div class="k">ML pipelines &amp; MLOps</div><div class="v">Automated training, evaluation and deployment pipelines with CI/CD (GitHub Actions, Concourse), MLflow tracking and validation gates before release.</div></div>
+      <div><div class="k">Data platforms</div><div class="v">ETL on AWS (SageMaker, Glue, S3) and Snowflake; Spark with Airflow; vector databases; SAP / ERP integration.</div></div>
+      <div><div class="k">Production engineering &amp; DevOps</div><div class="v">Python and C++ services behind REST APIs, containerised with Docker and Kubernetes and covered by automated unit and stress tests.</div></div>
+      <div><div class="k">SMB business flows</div><div class="v">Turning store data (photos, shelf images, camera video, POS and inventory) into assessments that feed POS, payment, alerting and ERP systems.</div></div>
+      <div><div class="k">VLMs, LLMs &amp; agents</div><div class="v">VLM business assessments configured per customer, multimodal LLM inference behind REST APIs, and the Claude Agent SDK for code review and data processing.</div></div>
+      <div><div class="k">Forecasting &amp; applied ML</div><div class="v">Demand, price and sales forecasting; driving-behaviour modelling (LSTM, k-means).</div></div>
     </div>
   </section>
   <section>
@@ -50,52 +50,50 @@
       <div class="job">
         <div class="hdr"><div class="ttl">Senior Machine Learning Engineer</div><div class="per">Mar 2024 — Oct 2026</div></div>
         <div class="org">Resideo Inc. (Honeywell Home) · <span class="tk">NYSE:REZI</span></div>
-        <div class="key">▸ Production ML: model pipeline, VLM solutions for SMB customers and system integration</div>
+        <div class="key">▸ Production ML pipelines and VLM solutions for SMB customers</div>
         <ul>
-          <li>Designed and optimised multimodal LLM inference (LLaMA3, GPT, CLIP) and integrated model outputs with backend decision systems through REST APIs and edge–cloud pipelines on Azure.</li>
-          <li>Owned the end-to-end model pipeline: PyTorch training and optimisation, ONNX export and conversion, experiment and model tracking in MLflow, Docker images released through GitHub Actions, and serving on Azure ML endpoints backed by a vector database.</li>
-          <li>Applied the Claude Agent SDK to automated code review in the CI pipeline and to parts of the user-flow data processing, including building the vector-database indexes.</li>
-          <li>Led low-level optimisation of transformer-backbone inference on edge devices: quantisation-aware deployment, mixed-precision execution, memory-access optimisation and hardware-aligned scheduling, within strict latency, memory and power budgets.</li>
-          <li>Optimised critical kernels and adapted model operators for target chips (Ambarella CV25 / CV72 class) and their embedded inference runtimes.</li>
-          <li>For small and medium-sized business (SMB) customers, built front-of-store information pipelines combining shopfront and signage photos, shelf and price-tag images, in-store camera video and store operating data (POS, inventory, pricing).</li>
-          <li>Applied vision–language models (VLMs) to business assessments: merchant verification and qualification, operating-status and risk assessment, shelf-display compliance, and security-event analysis with alert summaries.</li>
-          <li>Connected assessment results to POS and payment systems, alerting, ticketing and mobile apps; per-customer rules, categories and VLM prompt templates met each SMB customer's custom requirements.</li>
-          <li>Built validation and automated CI/CD testing (unit and stress) for production reliability.</li>
+          <li>Designed and optimised multimodal LLM inference (LLaMA3, GPT, CLIP) and connected model outputs to backend decision systems through REST APIs and edge–cloud pipelines on Azure.</li>
+          <li>Owned the end-to-end model pipeline: PyTorch training, ONNX conversion, MLflow tracking, Docker builds released through GitHub Actions, and serving on Azure ML endpoints with a vector database.</li>
+          <li>Used the Claude Agent SDK for automated code review in CI and for parts of the user-flow data processing, including building vector-database indexes.</li>
+          <li>Built store-data pipelines for small and medium-sized business (SMB) customers, combining shopfront, shelf and in-store camera images with POS and inventory data.</li>
+          <li>Used vision–language models (VLMs) for business assessments such as merchant verification, operating risk, shelf compliance and security-event summaries.</li>
+          <li>Connected the results to POS, payment, alerting and ticketing systems, and met each customer's needs through configurable rules and prompt templates.</li>
+          <li>Built automated validation and CI/CD testing for production reliability.</li>
         </ul>
-        <div class="stack"><b>Stack:</b> Python · C++ · PyTorch · ONNX · VLMs · Multimodal LLMs · Claude Agent SDK · CLIP · REST APIs · <b>ML DevOps:</b> GitHub Actions · Docker · MLflow · Azure ML endpoints · Vector database</div>
+        <div class="stack"><b>Stack:</b> Python · PyTorch · ONNX · LLMs / VLMs · Claude Agent SDK · <b>ML DevOps:</b> GitHub Actions · Docker · MLflow · Azure ML · Vector database</div>
       </div>
       <div class="job">
         <div class="hdr"><div class="ttl">Senior Machine Learning Engineer</div><div class="per">Mar 2022 — Mar 2024</div></div>
         <div class="org">EROAD Ltd · <span class="tk">ASX:ERD</span></div>
         <div class="key">▸ ML data platform, ETL pipelines and CI/CD for fleet-scale models</div>
         <ul>
-          <li>Developed and maintained production ETL pipelines on SageMaker, Lambda, Glue, S3, Snowflake and Docker, feeding continuous model training, evaluation and deployment.</li>
-          <li>Built Spark processing with Airflow orchestration for fleet itinerary management.</li>
-          <li>Used Concourse CI/CD to automate infrastructure provisioning and model deployment, keeping environments reproducible across development, testing and production.</li>
-          <li>Processed SMB fleet customers' driving data together with NZTA vehicle-inspection data for vehicle-status and driving-behaviour models.</li>
+          <li>Built and maintained production ETL pipelines on AWS (SageMaker, Lambda, Glue, S3) and Snowflake that fed continuous training, evaluation and deployment.</li>
+          <li>Built Spark jobs orchestrated with Airflow for fleet itinerary management.</li>
+          <li>Automated infrastructure provisioning and model deployment with Concourse CI/CD, keeping development, test and production environments reproducible.</li>
+          <li>Combined SMB fleet customers' driving data with NZTA vehicle-inspection records to model vehicle status and driving behaviour.</li>
         </ul>
-        <div class="stack"><b>Stack:</b> Python · C++ · PyTorch · AWS (SageMaker, Lambda, Glue, S3) · PySpark · Airflow · Snowflake · Concourse · Docker · CI/CD</div>
+        <div class="stack"><b>Stack:</b> Python · PyTorch · AWS (SageMaker, Lambda, Glue, S3) · Spark · Airflow · Snowflake · Concourse · Docker</div>
       </div>
       <div class="job">
         <div class="hdr"><div class="ttl">Machine Learning Engineer</div><div class="per">Jun 2021 — Feb 2022</div></div>
         <div class="org">StayinFront Ltd</div>
         <ul>
-          <li>Processed front-of-store data for retail and SMB clients (shelf and price-tag images, inventory, pricing, shelf life) for sales forecasting, and integrated the results with StayinFront's own ERP and with clients' ERP systems.</li>
+          <li>Forecast sales for retail and SMB clients from shelf images, inventory, pricing and shelf-life data, and integrated the results with StayinFront's ERP and clients' ERP systems.</li>
         </ul>
       </div>
       <div class="job">
         <div class="hdr"><div class="ttl">Machine Learning Engineer (Contract)</div><div class="per">Sep 2020 — Apr 2021</div></div>
         <div class="org">BuildingEstimates.com</div>
         <ul>
-          <li>Designed the framework architecture; Python/Flask services on GCP with Kubernetes processing images from Cloud Storage.</li>
+          <li>Designed the service architecture: Python / Flask services on GCP, running on Kubernetes and processing images from Cloud Storage.</li>
         </ul>
       </div>
       <div class="job">
         <div class="hdr"><div class="ttl">Data Engineer</div><div class="per">Sep 2017 — Sep 2019</div></div>
         <div class="org">Woolworths NZ · Woolworths Group <span class="tk">ASX:WOW</span></div>
         <ul>
-          <li>Designed and developed data pipelines that deliver accurate data to downstream applications.</li>
-          <li>Built RESTful API integrations with third-party ERP platforms (SAP portal) for data-warehouse, logistics and payment workflows.</li>
+          <li>Built data pipelines that delivered accurate data to downstream applications.</li>
+          <li>Integrated SAP and other ERP platforms through REST APIs for data-warehouse, logistics and payment workflows.</li>
         </ul>
       </div>
       <div class="early">
