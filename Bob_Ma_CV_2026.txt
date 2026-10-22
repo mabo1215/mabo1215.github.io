@@ -1,0 +1,65 @@
+BOB MA
+Senior Machine Learning Engineer · ML Pipelines & MLOps · Data Platforms · Production ML
+Email: amabo1215@gmail.com | GitHub: github.com/mabo1215 | Web: mabo1215.github.io
+Work rights: NZ Permanent Resident | Available: Immediately
+
+SUMMARY
+
+Machine learning engineer in Auckland with 6+ years in production ML and 18+ years in software and data engineering. Holds a PhD from AUT (machine learning for privacy preservation) and an MSc in computer software and theory. Specialises in the data pipelines and automation that keep models running in production: ETL on AWS and Snowflake, Spark with Airflow, CI/CD with GitHub Actions and Concourse, MLflow tracking and Azure ML endpoints. Most recently, at Resideo, built VLM-based business assessment for small and medium-sized business (SMB) customers, from store data through to POS, payment and alerting systems. Experience spans smart-home, transport, retail and construction. Inventor on three patents and reviewer for AAAI, ACM TOMM and IEEE journals.
+
+CORE SKILLS / STRENGTHS
+
+- ML pipelines & MLOps: Automated training, evaluation and deployment pipelines with CI/CD (GitHub Actions, Concourse), MLflow tracking and validation gates before release.
+- Data platforms: ETL on AWS (SageMaker, Glue, S3) and Snowflake; Spark with Airflow; vector databases; SAP / ERP integration.
+- Production engineering & DevOps: Python and C++ services behind REST APIs, containerised with Docker and Kubernetes and covered by automated unit and stress tests.
+- SMB business flows: Turning store data (photos, shelf images, camera video, POS and inventory) into assessments that feed POS, payment, alerting and ticketing systems.
+- VLMs, LLMs & agents: VLM business assessments configured per customer, multimodal LLM inference behind REST APIs, and the Claude Agent SDK for code review and data processing.
+- Forecasting & applied ML: Demand, price and sales forecasting; driving-behaviour modelling (LSTM, k-means).
+
+WORK EXPERIENCE
+
+Senior Machine Learning Engineer | Resideo Inc. (Honeywell Home) · NYSE:REZI | Mar 2024 - Oct 2026
+Production ML pipelines and VLM solutions for SMB customers
+- Designed and optimised multimodal LLM inference (LLaMA3, GPT, CLIP) and connected model outputs to backend decision systems through REST APIs and edge–cloud pipelines on Azure.
+- Owned the end-to-end model pipeline: PyTorch training, ONNX conversion, MLflow tracking, Docker builds released through GitHub Actions, and serving on Azure ML endpoints with a vector database.
+- Used the Claude Agent SDK for automated code review in CI and for parts of the user-flow data processing, including building vector-database indexes.
+- Built store-data pipelines for small and medium-sized business (SMB) customers, combining shopfront, shelf and in-store camera images with POS and inventory data.
+- Used vision–language models (VLMs) for business assessments such as merchant verification, operating risk, shelf compliance and security-event summaries.
+- Connected the results to POS, payment, alerting and ticketing systems, and met each customer's needs through configurable rules and prompt templates.
+- Built automated validation and CI/CD testing for production reliability.
+Stack: Python · PyTorch · ONNX · LLMs / VLMs · Claude Agent SDK · ML DevOps: GitHub Actions · Docker · MLflow · Azure ML · Vector database
+
+Senior Machine Learning Engineer | EROAD Ltd · ASX:ERD | Mar 2022 - Mar 2024
+ML data platform, ETL pipelines and CI/CD for fleet-scale models
+- Built and maintained production ETL pipelines on AWS (SageMaker, Lambda, Glue, S3) and Snowflake that fed continuous training, evaluation and deployment.
+- Built Spark jobs orchestrated with Airflow for fleet itinerary management.
+- Automated infrastructure provisioning and model deployment with Concourse CI/CD, keeping development, test and production environments reproducible.
+- Combined SMB fleet customers' driving data with NZTA vehicle-inspection records to model vehicle status and driving behaviour.
+Stack: Python · PyTorch · AWS (SageMaker, Lambda, Glue, S3) · Spark · Airflow · Snowflake · Concourse · Docker
+
+Machine Learning Engineer | StayinFront Ltd | Jun 2021 - Feb 2022
+- Developed backend services and ML models for detecting price tags and SKU information from shelf and packaging images.
+- Forecast sales for supermarket groups such as Walmart from shelf images, inventory, pricing and shelf-life data, and integrated the results with StayinFront's ERP and the clients' ERP systems.
+- Built the data pipeline behind the forecasts: PySpark processing and Python / Flask services connected to the existing AWS stack (S3, EC2, DynamoDB).
+Stack: Python · Keras · TensorFlow · PySpark · DynamoDB · Flask · AWS
+
+Machine Learning Engineer (Contract) | BEDC (BuildingEstimates.com) | Sep 2020 - Apr 2021
+- Built a plan-recognition and building-information extraction system for architectural drawings (elevation, floor and roof plans), assessing building plans for quantity surveying.
+- Recognised and processed plans with CNN and LSTM deep-learning models combined with PCA and HMM.
+- Designed the framework architecture for building-material analysis and quantity-survey information.
+- Developed the building-plan management platform in Python (Flask, pandas) and helped implement it on GCP, with Flask services processing plan images from Cloud Storage.
+Stack: Python · pandas · NumPy · Flask · Git · GCP · Kubernetes
+
+Data Engineer | Woolworths NZ · Woolworths Group ASX:WOW | Sep 2017 - Sep 2019
+- Added random forest, CNN, RNN and MDAV algorithms to the data platform, with documented code.
+- Integrated SAP and other ERP platforms through REST APIs for data-warehouse, logistics and payment workflows.
+- Built cross-border payment and logistics solutions with a React Native web UI.
+- Implemented and managed data procedures for security and integrity; Agile / Scrum delivery with CI/CD and testing specialists, versioned in GitHub.
+Stack: Python · C# · TensorFlow · MS SQL Server · Docker · AWS · React Native · AngularJS
+
+Full Stack Developer | New Image International | Jun 2014 - May 2017
+E-commerce and ERP platforms: order processing, customer management, payment-gateway integration.
+Software Developer | Huawei Symantec Technology | Dec 2010 - Aug 2013
+Led frontend and backend teams; multithreaded Linux C/C++; time-series anomaly detection in spectrum data (Kalman filter, HMM).
+Software Developer | Topsec Network Security (002212.SZ) | Oct 2007 - Mar 2010
+Linux intrusion detection with kernel-level packet analysis; DDoS detection.
