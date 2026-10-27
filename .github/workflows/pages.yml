@@ -1,6 +1,4 @@
-# Builds the site with the same Jekyll setup as the old "Deploy from a branch" mode, but checks out
-# without submodules: ResumeManagement is a private submodule, which the branch build cannot clone
-# and which must never be published.
+# Builds the site with the same Jekyll setup as the old "Deploy from a branch" mode.
 name: Deploy site to GitHub Pages
 
 on:
@@ -22,8 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: false
       - uses: actions/configure-pages@v5
       - uses: actions/jekyll-build-pages@v1
         with:
